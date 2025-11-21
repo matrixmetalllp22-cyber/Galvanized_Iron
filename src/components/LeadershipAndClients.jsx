@@ -18,21 +18,21 @@ const leaders = [
 ];
 
 const clients = [
-  { name: "Tata Motors", logo: "/public/logos/TVS-Motor-Company.png" },
-  { name: "Bosch", logo: "/public/logos/Ola-Cabs-Logo.png" },
-  { name: "Bajaj", logo: "/public/logos/Wave_mec.png" },
-  { name: "Maruti Suzuki", logo: "/public/logos/Taal.png" },
-  { name: "Mahindra", logo: "/public/logos/Boeing.png" },
-  { name: "Hyundai", logo: "/public/logos/BEML.png" },
-  { name: "Hero MotoCorp", logo: "/public/logos/DRDO.png" },
-  { name: "TVS", logo: "/public/logos/mg.png" },
-  { name: "Ashok Leyland", logo: "/public/logos/indian_railways.png" },
-  { name: "Volvo Eicher", logo: "/public/logos/General_Electric.png" },
-  { name: "TVS", logo: "/public/logos/Siemens.png" },
-  { name: "Ashok Leyland", logo: "/public/logos/Hitachi.png" },
-  { name: "Volvo Eicher", logo: "/public/logos/AEQUS.png" },
-  { name: "Ashok Leyland", logo: "/public/logos/garuda.png" },
-  { name: "Volvo Eicher", logo: "/public/logos/AEQUS.png" },
+  { name: "Tata Motors", logo: "/Logos/TVS-Motor-Company.png" },
+  { name: "Bosch", logo: "/Logos/Ola-Cabs-Logo.png" },
+  { name: "Bajaj", logo: "/Logos/Wave_mec.png" },
+  { name: "Maruti Suzuki", logo: "/Logos/Taal.png" },
+  { name: "Mahindra", logo: "/Logos/Boeing.png" },
+  { name: "Hyundai", logo: "/Logos/BEML.png" },
+  { name: "Hero MotoCorp", logo: "/Logos/DRDO.png" },
+  { name: "TVS", logo: "/Logos/mg.png" },
+  { name: "Ashok Leyland", logo: "/Logos/indian_railways.png" },
+  { name: "Volvo Eicher", logo: "/Logos/General_Electric.png" },
+  { name: "TVS", logo: "/Logos/Siemens.png" },
+  { name: "Ashok Leyland", logo: "/Logos/Hitachi.png" },
+  { name: "Volvo Eicher", logo: "/Logos/AEQUS.png" },
+  { name: "Ashok Leyland", logo: "/Logos/garuda.png" },
+  { name: "Volvo Eicher", logo: "/Logos/AEQUS.png" },
 ];
 
 const LeadershipAndClients  = () => {
