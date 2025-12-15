@@ -716,332 +716,10 @@
 
 
 
-// import React, { useState, useEffect, memo } from "react";
-// import axios from "axios";
-
-// // Optimized Card Component
-// const NewsCard = memo(({ article }) => {
-//   const formatDate = (dateString) => {
-//     const date = new Date(dateString);
-//     return date.toLocaleDateString("en-US", {
-//       month: "short",
-//       day: "numeric",
-//       hour: "2-digit",
-//       minute: "2-digit",
-//     });
-//   };
-
-//   return (
-//     <article className="group relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden hover:bg-white/15 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-500/30 h-full flex flex-col">
-//       <div className="relative h-64 overflow-hidden">
-//         {article.urlToImage ? (
-//           <img
-//             src={article.urlToImage}
-//             alt={article.title}
-//             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-//             loading="lazy"
-//             onError={(e) => {
-//               e.target.src = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80";
-//             }}
-//           />
-//         ) : (
-//           <div className="w-full h-full bg-gradient-to-br from-blue-600/50 to-cyan-700/50 flex items-center justify-center">
-//             <span className="text-8xl font-black text-white/20">AL</span>
-//           </div>
-//         )}
-//         <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold border border-white/30">
-//           {article.source.name || "News"}
-//         </div>
-//       </div>
-
-//       <div className="p-7 flex flex-col flex-grow">
-//         <h3 className="text-xl font-bold text-white mb-3 line-clamp-3 group-hover:text-cyan-300 transition-colors">
-//           {article.title}
-//         </h3>
-
-//         <p className="text-blue-200 text-sm mb-6 line-clamp-3 flex-grow">
-//           {article.description || "Click to read the full article..."}
-//         </p>
-
-//         <div className="flex justify-between items-center text-xs text-cyan-300 mb-6">
-//           <span>{formatDate(article.publishedAt)}</span>
-//           <span className="px-3 py-1 bg-cyan-500/30 rounded-full">Aluminum</span>
-//         </div>
-
-//         <a
-//           href={article.url}
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="block text-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg mt-auto"
-//         >
-//           Read Article
-//         </a>
-//       </div>
-//     </article>
-//   );
-// });
-
-// const AluminumNewsDashboard = () => {
-//   const [articles, setArticles] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   const API_KEY = "7347fdca6aa84c0c9e4c39358710b34e";
-
-//   const query = `("aluminum" OR "aluminium" OR "LME aluminum" OR "bauxite" OR "alumina" OR "Alcoa" OR "Rusal" OR "Norsk Hydro" OR "aluminum price" OR "primary aluminum") -football -recipe -cooking`;
-
-//   useEffect(() => {
-//     const fetchNews = async () => {
-//       try {
-//         const res = await axios.get(
-//           `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&pageSize=40&sortBy=publishedAt&apiKey=${API_KEY}`
-//         );
-
-//         const filtered = res.data.articles
-//           .filter((a) => {
-//             const text = `${a.title || ""} ${a.description || ""}`.toLowerCase();
-//             return /(alumin(i)?um|bauxite|alumina|lme|alcoa|rusal|hydro|smelter)/i.test(text);
-//           })
-//           .slice(0, 24);
-
-//         setArticles(filtered);
-//         setLoading(false);
-//       } catch (err) {
-//         console.error("Failed to load news:", err.message);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchNews();
-//     const interval = setInterval(fetchNews, 600000); // 10 minutes
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-cyan-950 text-white">
-//       {/* Background Effects */}
-//       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-//         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-//         <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-//       </div>
-
-//       {/* Header */}
-//       <header className="relative z-10 pt-16 pb-32 text-center px-6">
-//         <div className="max-w-7xl mx-auto">
-//           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-lg px-6 py-3 rounded-full mb-8">
-//             <div className="w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
-//             <span>LIVE • {articles.length} Articles</span>
-//           </div>
-//           <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
-//             ALUMINUM NEWS
-//           </h1>
-//           <p className="mt-6 text-xl text-blue-200">Real-time Global Industry Updates</p>
-//         </div>
-//       </header>
-
-//       {/* Main Grid */}
-//       <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20 -mt-16">
-//         {loading ? (
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-//             {[...Array(20)].map((_, i) => (
-//               <div key={i} className="bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden animate-pulse">
-//                 <div className="h-64 bg-gradient-to-br from-white/10 to-white/5"></div>
-//                 <div className="p-8">
-//                   <div className="h-8 bg-white/20 rounded-xl mb-4"></div>
-//                   <div className="h-5 bg-white/10 rounded-lg w-full mb-3"></div>
-//                   <div className="h-5 bg-white/10 rounded-lg w-4/5"></div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         ) : (
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-//             {articles.map((article, i) => (
-//               <NewsCard key={i} article={article} />
-//             ))}
-//           </div>
-//         )}
-//       </main>
-
-//       <footer className="text-center py-8 text-blue-300 text-sm border-t border-white/10">
-//         Powered by NewsAPI • Updated every 10 minutes • {new Date().getFullYear()}
-//       </footer>
-//     </div>
-//   );
-// };
-
-// export default AluminumNewsDashboard;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect, memo } from "react";
-// import axios from "axios";
-
-// // HORIZONTAL CARD
-// const NewsCard = memo(({ article }) => {
-//   const formatDate = (dateString) => {
-//     const date = new Date(dateString);
-//     return date.toLocaleDateString("en-US", {
-//       month: "short",
-//       day: "numeric",
-//       hour: "2-digit",
-//       minute: "2-digit",
-//     });
-//   };
-
-//   return (
-//     <article className="group bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col md:flex-row w-full h-auto">
-      
-//       {/* IMAGE SECTION */}
-//       <div className="w-full md:w-1/3 h-64 md:h-auto overflow-hidden">
-//         {article.urlToImage ? (
-//           <img
-//             src={article.urlToImage}
-//             alt={article.title}
-//             className="w-full h-full object-cover md:object-cover transition-transform duration-700 group-hover:scale-105"
-//             loading="lazy"
-//             onError={(e) => {
-//               e.target.src =
-//                 "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80";
-//             }}
-//           />
-//         ) : (
-//           <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-//             <span className="text-6xl font-black text-gray-400">AL</span>
-//           </div>
-//         )}
-//       </div>
-
-//       {/* TEXT SECTION */}
-//       <div className="p-6 md:p-8 flex flex-col md:w-2/3 text-black">
-
-//         <div className="flex justify-between items-center mb-3">
-//           <span className="text-xs bg-black text-white px-3 py-1 rounded-full">
-//             {article.source.name || "News"}
-//           </span>
-//           <span className="text-xs text-orange-400 font-semibold">
-//             {formatDate(article.publishedAt)}
-//           </span>
-//         </div>
-
-//         <h3 className="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors line-clamp-2">
-//           {article.title}
-//         </h3>
-
-//         <p className="text-gray-700 text-sm mb-6 line-clamp-3">
-//           {article.description || "Click below to read more..."}
-//         </p>
-
-//         <div className="mt-auto">
-//           <a
-//             href={article.url}
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="inline-block text-center bg-orange-500 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-400 transition-all duration-300 shadow-md"
-//           >
-//             Read Article
-//           </a>
-//         </div>
-//       </div>
-//     </article>
-//   );
-// });
-
-
-// // MAIN COMPONENT
-// const AluminumNewsDashboard = () => {
-//   const [articles, setArticles] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   const API_KEY = "7347fdca6aa84c0c9e4c39358710b34e";
-//   const query = `("aluminum" OR "aluminium" OR "LME aluminum" OR "bauxite" OR "alumina")`;
-
-//   useEffect(() => {
-//     const fetchNews = async () => {
-//       try {
-//         const res = await axios.get(
-//           `https://newsapi.org/v2/everything?q=${encodeURIComponent(
-//             query
-//           )}&language=en&pageSize=40&sortBy=publishedAt&apiKey=${API_KEY}`
-//         );
-
-//         const filtered = res.data.articles
-//           .filter((a) => {
-//             const text = `${a.title || ""} ${a.description || ""}`.toLowerCase();
-//             return /(alumin|bauxite|alumina|lme|smelter)/i.test(text);
-//           })
-//           .slice(0, 20);
-
-//         setArticles(filtered);
-//         setLoading(false);
-//       } catch (err) {
-//         console.error("Failed to load news:", err.message);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchNews();
-//   }, []);
-
-//   return (
-//     <div className="min-h-screen bg-white bg-gradient-to-r from-white to-gray-300 text-black">
-      
-//       {/* HEADER */}
-//       <header className="text-center pt-16 pb-12 px-6">
-//         <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-sm mb-8 border border-gray-300">
-//           <div className="w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
-//           <span className="text-gray-700">LIVE • {articles.length} Articles</span>
-//         </div>
-
-//         <h1 className="text-5xl md:text-7xl font-black">ALUMINUM NEWS</h1>
-//         <p className="mt-4 text-lg text-gray-600">
-//           Real-time Global Industry Updates
-//         </p>
-//       </header>
-
-//       {/* HORIZONTAL CARD GRID */}
-//       <main className="max-w-6xl mx-auto px-6 py-10 space-y-8">
-//         {loading ? (
-//           [...Array(6)].map((_, i) => (
-//             <div
-//               key={i}
-//               className="bg-white rounded-xl h-48 shadow animate-pulse"
-//             ></div>
-//           ))
-//         ) : (
-//           articles.map((article, i) => <NewsCard key={i} article={article} />)
-//         )}
-//       </main>
-
-//       <footer className="text-center py-8 text-gray-600 text-sm border-t border-gray-300">
-//         Powered by NewsAPI • Updated Every 10 Minutes • {new Date().getFullYear()}
-//       </footer>
-//     </div>
-//   );
-// };
-
-// export default AluminumNewsDashboard;
-
-
-
-
 import React, { useState, useEffect, memo } from "react";
 import axios from "axios";
 
-// -------------------- CARD --------------------
+// Optimized Card Component
 const NewsCard = memo(({ article }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -1054,50 +732,47 @@ const NewsCard = memo(({ article }) => {
   };
 
   return (
-    <article className="group bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col md:flex-row w-full">
-      
-      <div className="w-full md:w-1/3 h-64 md:h-auto overflow-hidden">
+    <article className="group relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden hover:bg-white/15 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-500/30 h-full flex flex-col">
+      <div className="relative h-64 overflow-hidden">
         {article.urlToImage ? (
           <img
             src={article.urlToImage}
             alt={article.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             loading="lazy"
-            onError={(e) =>
-              (e.target.src =
-                "https://images.unsplash.com/photo-1600585154340-be6161a56a0c")
-            }
+            onError={(e) => {
+              e.target.src = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80";
+            }}
           />
         ) : (
-          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-            <span className="text-6xl font-black text-gray-400">AL</span>
+          <div className="w-full h-full bg-gradient-to-br from-blue-600/50 to-cyan-700/50 flex items-center justify-center">
+            <span className="text-8xl font-black text-white/20">AL</span>
           </div>
         )}
+        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold border border-white/30">
+          {article.source.name || "News"}
+        </div>
       </div>
 
-      <div className="p-6 md:p-8 flex flex-col md:w-2/3 text-black">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-xs bg-black text-white px-3 py-1 rounded-full">
-            {article.source?.name || "News"}
-          </span>
-          <span className="text-xs text-orange-400 font-semibold">
-            {formatDate(article.publishedAt)}
-          </span>
-        </div>
-
-        <h3 className="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors line-clamp-2">
+      <div className="p-7 flex flex-col flex-grow">
+        <h3 className="text-xl font-bold text-white mb-3 line-clamp-3 group-hover:text-cyan-300 transition-colors">
           {article.title}
         </h3>
 
-        <p className="text-gray-700 text-sm mb-6 line-clamp-3">
-          {article.description || "Click below to read more..."}
+        <p className="text-blue-200 text-sm mb-6 line-clamp-3 flex-grow">
+          {article.description || "Click to read the full article..."}
         </p>
+
+        <div className="flex justify-between items-center text-xs text-cyan-300 mb-6">
+          <span>{formatDate(article.publishedAt)}</span>
+          <span className="px-3 py-1 bg-cyan-500/30 rounded-full">Aluminum</span>
+        </div>
 
         <a
           href={article.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto inline-block bg-orange-500 text-white font-bold px-6 py-3 rounded-xl hover:bg-orange-400 transition"
+          className="block text-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg mt-auto"
         >
           Read Article
         </a>
@@ -1106,108 +781,106 @@ const NewsCard = memo(({ article }) => {
   );
 });
 
-// -------------------- MAIN --------------------
 const AluminumNewsDashboard = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const NEWS_API_KEY = "7347fdca6aa84c0c9e4c39358710b34e";
-  const GNEWS_API_KEY = "YOUR_GNEWS_API_KEY"; // 👈 add once
+  const API_KEY = "7347fdca6aa84c0c9e4c39358710b34e";
 
-  const query = "aluminum OR aluminium OR bauxite OR alumina OR LME";
+  const query = `("aluminum" OR "aluminium" OR "LME aluminum" OR "bauxite" OR "alumina" OR "Alcoa" OR "Rusal" OR "Norsk Hydro" OR "aluminum price" OR "primary aluminum") -football -recipe -cooking`;
 
-  const fromDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-    .toISOString()
-    .split("T")[0];
-
-  // ---------- PRIMARY API ----------
-  const fetchFromNewsAPI = async () => {
-    const res = await axios.get(
-      `https://newsapi.org/v2/everything?q=${encodeURIComponent(
-        query
-      )}&from=${fromDate}&language=en&sortBy=publishedAt&pageSize=40&apiKey=${NEWS_API_KEY}`
-    );
-
-    return res.data.articles;
-  };
-
-  // ---------- FALLBACK API ----------
-  const fetchFromGNews = async () => {
-    const res = await axios.get(
-      `https://gnews.io/api/v4/search?q=${encodeURIComponent(
-        query
-      )}&from=${fromDate}&lang=en&max=40&apikey=${GNEWS_API_KEY}`
-    );
-
-    return res.data.articles.map((a) => ({
-      title: a.title,
-      description: a.description,
-      url: a.url,
-      urlToImage: a.image,
-      publishedAt: a.publishedAt,
-      source: { name: a.source.name },
-    }));
-  };
-
-  // ---------- FETCH LOGIC ----------
-  const loadNews = async () => {
-    try {
-      setLoading(true);
-      const articles = await fetchFromNewsAPI();
-      setArticles(articles.slice(0, 20));
-    } catch (err) {
-      console.warn("NewsAPI failed → switching to GNews");
-      try {
-        const fallbackArticles = await fetchFromGNews();
-        setArticles(fallbackArticles.slice(0, 20));
-      } catch (fallbackErr) {
-        console.error("Both APIs failed");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // ---------- AUTO REFRESH (10 MIN) ----------
   useEffect(() => {
-    loadNews(); // initial load
+    const fetchNews = async () => {
+      try {
+        const res = await axios.get(
+          `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&pageSize=40&sortBy=publishedAt&apiKey=${API_KEY}`
+        );
 
-    const interval = setInterval(() => {
-      loadNews();
-    }, 10 * 60 * 1000); // 10 minutes
+        const filtered = res.data.articles
+          .filter((a) => {
+            const text = `${a.title || ""} ${a.description || ""}`.toLowerCase();
+            return /(alumin(i)?um|bauxite|alumina|lme|alcoa|rusal|hydro|smelter)/i.test(text);
+          })
+          .slice(0, 24);
 
+        setArticles(filtered);
+        setLoading(false);
+      } catch (err) {
+        console.error("Failed to load news:", err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+    const interval = setInterval(fetchNews, 600000); // 10 minutes
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-white to-gray-300 text-black">
-      <header className="text-center pt-16 pb-12 px-6">
-        <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow border border-gray-300 mb-8">
-          <div className="w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
-          <span className="text-gray-700">
-            LIVE • Auto-refresh every 10 mins
-          </span>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-cyan-950 text-white">
+      {/* Background Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+      </div>
 
-        <h1 className="text-5xl md:text-7xl font-black">ALUMINUM NEWS</h1>
-        <p className="mt-4 text-lg text-gray-600">
-          Last 7 Days • Global Industry Updates
-        </p>
+      {/* Header */}
+      <header className="relative z-10 pt-16 pb-32 text-center px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-lg px-6 py-3 rounded-full mb-8">
+            <div className="w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
+            <span>LIVE • {articles.length} Articles</span>
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+            ALUMINUM NEWS
+          </h1>
+          <p className="mt-6 text-xl text-blue-200">Real-time Global Industry Updates</p>
+        </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-10 space-y-8">
-        {loading
-          ? [...Array(6)].map((_, i) => (
-              <div key={i} className="h-48 bg-white rounded-xl animate-pulse" />
-            ))
-          : articles.map((a, i) => <NewsCard key={i} article={a} />)}
+      {/* Main Grid */}
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20 -mt-16">
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden animate-pulse">
+                <div className="h-64 bg-gradient-to-br from-white/10 to-white/5"></div>
+                <div className="p-8">
+                  <div className="h-8 bg-white/20 rounded-xl mb-4"></div>
+                  <div className="h-5 bg-white/10 rounded-lg w-full mb-3"></div>
+                  <div className="h-5 bg-white/10 rounded-lg w-4/5"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {articles.map((article, i) => (
+              <NewsCard key={i} article={article} />
+            ))}
+          </div>
+        )}
       </main>
 
-      <footer className="text-center py-8 text-gray-600 text-sm border-t border-gray-300">
-        NewsAPI + GNews • Auto-updating • {new Date().getFullYear()}
+      <footer className="text-center py-8 text-blue-300 text-sm border-t border-white/10">
+        Powered by NewsAPI • Updated every 10 minutes • {new Date().getFullYear()}
       </footer>
     </div>
   );
 };
 
 export default AluminumNewsDashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
