@@ -1,298 +1,248 @@
-
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowRight, FaDownload } from "react-icons/fa";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import {
+  FaArrowRight,
+  FaDownload,
+  FaRobot,
+  FaChartLine,
+  FaTools,
+} from "react-icons/fa";
 import jsPDF from "jspdf";
 
+/* -------------------- DATA -------------------- */
 const caseStudies = [
   {
     id: 1,
     title: "Smart Manufacturing & IoT Automation System",
     description:
-      "A fully automated manufacturing data platform built to replace traditional excel and paper-based production tracking.",
+      "A fully automated manufacturing data platform replacing excel and paper-based production tracking.",
     problem:
-      "Manufacturing supervisors recorded processes manually, causing delays, inaccurate reports, and lack of real-time insights.",
+      "Manual data entry caused delays, reporting errors, and no real-time visibility.",
     approach:
-      "Conducted requirement analysis, mapped workflow, integrated IoT modules with machine PLC signals, and built a real-time monitoring UI.",
+      "Analyzed workflows, integrated IoT sensors with PLCs, and designed real-time dashboards.",
     solution:
-      "Designed and developed a MERN-based dashboard with live metrics, automated downtime alerts, and predictive maintenance insights.",
+      "Built a MERN-based system with live metrics, downtime alerts, and predictive insights.",
     result:
-      "Production efficiency improved by 62%, error rate dropped by 80%, and reporting time reduced from 6 hours to under 15 seconds.",
+      "Efficiency improved by 62%, error rate reduced by 80%, reporting time cut to seconds.",
     impact:
-      "Enabled management to make faster decisions, reduced workforce dependency, and increased transparency across the production chain.",
-    tech: ["React", "Node.js", "MongoDB", "MQTT", "TailwindCSS", "IoT Sensors", "Chart.js"],
+      "Faster decisions, reduced workforce dependency, and full production transparency.",
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "MQTT",
+      "TailwindCSS",
+      "IoT Sensors",
+      "Chart.js",
+    ],
+    icon: <FaRobot className="w-12 h-12 sm:w-14 sm:h-14" />,
   },
   {
     id: 2,
     title: "Industrial Customer Support Portal & Analytics Engine",
     description:
-      "A centralized web portal to manage customer orders, warranty claims, and service logs with real-time analytics dashboard.",
+      "Centralized portal for managing customer orders, warranties, and service analytics.",
     problem:
-      "Client struggled with scattered customer communication and no automated tracking for order lifecycle or service requests.",
+      "Scattered communication and no automated tracking of service lifecycle.",
     approach:
-      "Interviewed end-users, analyzed workflows, designed data models, and created automated notification and tracking pipelines.",
+      "User interviews, workflow analysis, data modeling, and notification automation.",
     solution:
-      "Built a secure role-based portal with automated emails, data visualization dashboards, and advanced filtering and audit trail logging.",
+      "Secure role-based portal with dashboards, alerts, and audit logs.",
     result:
-      "Manual workload reduced by 78%, response speed increased by 45%, and customer satisfaction rating increased from 3.2 to 4.6.",
+      "78% workload reduction and 45% faster response time.",
     impact:
-      "Business scaled operations efficiently without increasing manpower, resulting in improved service reliability.",
-    tech: ["Next.js", "Express.js", "JWT Auth", "MySQL", "Framer Motion", "Redis Cache"],
+      "Scalable operations with higher customer satisfaction.",
+    tech: [
+      "Next.js",
+      "Express.js",
+      "JWT Auth",
+      "MySQL",
+      "Framer Motion",
+      "Redis",
+    ],
+    icon: <FaChartLine className="w-12 h-12 sm:w-14 sm:h-14" />,
   },
 ];
 
-// --- PDF Download Function ---
+/* -------------------- PDF -------------------- */
 const handleDownloadPDF = (study) => {
-  try {
-    const doc = new jsPDF();
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    let yPosition = 20;
-    const margin = 15;
-    const lineHeight = 7;
-    const maxWidth = pageWidth - 2 * margin;
+  const doc = new jsPDF();
+  let y = 25;
+  const margin = 20;
+  const width = doc.internal.pageSize.getWidth() - margin * 2;
 
-    // Add title
-    doc.setFontSize(18);
-    doc.setTextColor(31, 41, 55);
-    const titleLines = doc.splitTextToSize(study.title, maxWidth);
-    titleLines.forEach((line) => {
-      doc.text(line, margin, yPosition);
-      yPosition += lineHeight + 2;
-    });
+  doc.setFontSize(22);
+  doc.text(study.title, margin, y);
+  y += 15;
 
-    yPosition += 5;
+  const sections = ["description", "problem", "approach", "solution", "result", "impact"];
 
-    // Add sections
-    const sections = [
-      { label: "Description", value: study.description },
-      { label: "Problem", value: study.problem },
-      { label: "Approach", value: study.approach },
-      { label: "Solution", value: study.solution },
-      { label: "Result", value: study.result },
-      { label: "Impact", value: study.impact },
-    ];
+  sections.forEach((key) => {
+    if (y > 260) {
+      doc.addPage();
+      y = 25;
+    }
+    doc.setFontSize(14);
+    doc.setTextColor(249, 115, 22);
+    doc.text(key.toUpperCase(), margin, y);
+    y += 8;
 
     doc.setFontSize(11);
-    sections.forEach((section) => {
-      // Check if we need a new page
-      if (yPosition > pageHeight - 30) {
-        doc.addPage();
-        yPosition = 20;
-      }
+    doc.setTextColor(60, 60, 60);
+    doc.text(doc.splitTextToSize(study[key], width), margin, y);
+    y += 15;
+  });
 
-      doc.setTextColor(249, 115, 22); // Orange color
-      doc.setFont(undefined, "bold");
-      doc.text(section.label + ":", margin, yPosition);
-      yPosition += lineHeight;
-
-      doc.setTextColor(55, 65, 81); // Dark gray
-      doc.setFont(undefined, "normal");
-      const textLines = doc.splitTextToSize(section.value, maxWidth);
-      textLines.forEach((line) => {
-        if (yPosition > pageHeight - 20) {
-          doc.addPage();
-          yPosition = 20;
-        }
-        doc.text(line, margin, yPosition);
-        yPosition += lineHeight;
-      });
-      yPosition += 3;
-    });
-
-    // Add tech stack
-    if (yPosition > pageHeight - 30) {
-      doc.addPage();
-      yPosition = 20;
-    }
-
-    doc.setTextColor(249, 115, 22);
-    doc.setFont(undefined, "bold");
-    doc.text("Technologies:", margin, yPosition);
-    yPosition += lineHeight;
-
-    doc.setTextColor(55, 65, 81);
-    doc.setFont(undefined, "normal");
-    const techText = study.tech.join(", ");
-    const techLines = doc.splitTextToSize(techText, maxWidth);
-    techLines.forEach((line) => {
-      if (yPosition > pageHeight - 20) {
-        doc.addPage();
-        yPosition = 20;
-      }
-      doc.text(line, margin, yPosition);
-      yPosition += lineHeight;
-    });
-
-    // Download
-    const filename = `${study.title.replace(/\s+/g, "_")}.pdf`;
-    doc.save(filename);
-  } catch (error) {
-    console.error("PDF generation error:", error);
-    alert("Failed to generate PDF. Please try again.");
-  }
+  doc.save(`${study.title.replace(/\s+/g, "_")}.pdf`);
 };
 
-// --- MODAL COMPONENT ---
+/* -------------------- MODAL -------------------- */
 const Modal = ({ study, onClose }) => {
-  if (!study) return null;
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/40 backdrop-blur-md flex items-center justify-center z-50 px-4"
+      className="fixed inset-0 bg-black/60 backdrop-blur flex items-center justify-center p-4 z-50 overflow-y-auto"
       onClick={onClose}
     >
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 50, opacity: 0 }}
-        transition={{ duration: 0.4 }}
-        className="bg-white w-full max-w-3xl rounded-2xl shadow-2xl p-8 overflow-y-auto max-h-[85vh]"
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 120 }}
+        className="bg-white rounded-3xl w-full max-w-5xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">{study.title}</h2>
-
-        <div className="space-y-3 text-gray-700 text-[15px] leading-relaxed">
-          <p><strong>Description:</strong> {study.description}</p>
-          <p><strong>Problem:</strong> {study.problem}</p>
-          <p><strong>Approach:</strong> {study.approach}</p>
-          <p><strong>Solution:</strong> {study.solution}</p>
-          <p><strong>Result:</strong> {study.result}</p>
-          <p><strong>Impact:</strong> {study.impact}</p>
+        {/* Header */}
+        <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 sm:p-12">
+          {study.icon}
+          <h2 className="text-3xl sm:text-4xl font-black mt-6">
+            {study.title}
+          </h2>
+          <p className="mt-4 opacity-90">{study.description}</p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-6">
-          {study.tech.map((tech, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs uppercase tracking-wide font-semibold"
+        {/* Content */}
+        <div className="p-6 sm:p-10 space-y-8">
+          {["Problem", "Approach", "Solution", "Result", "Impact"].map(
+            (section) => (
+              <div key={section}>
+                <h3 className="text-xl font-bold text-orange-600 mb-2">
+                  {section}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {study[section.toLowerCase()]}
+                </p>
+              </div>
+            )
+          )}
+
+          <div>
+            <h3 className="text-xl font-bold mb-3">Technologies</h3>
+            <div className="flex flex-wrap gap-3">
+              {study.tech.map((t) => (
+                <span
+                  key={t}
+                  className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-end pt-6 border-t">
+            <button
+              onClick={() => handleDownloadPDF(study)}
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-xl font-semibold hover:bg-orange-700"
             >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex justify-between mt-8 gap-4">
-          <button
-            onClick={() => handleDownloadPDF(study)}
-            className="flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 font-semibold transition-colors duration-200"
-          >
-            <FaDownload className="w-4 h-4" />
-            Download PDF
-          </button>
-
-          <button
-            onClick={onClose}
-            className="px-6 py-3 border-2 border-orange-600 text-orange-600 rounded-lg hover:bg-orange-50 font-semibold transition-colors duration-200"
-          >       
-            Close
-          </button>
+              <FaDownload /> Download PDF
+            </button>
+            <button
+              onClick={onClose}
+              className="px-6 py-3 border border-orange-600 text-orange-600 rounded-xl font-semibold hover:bg-orange-50"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </motion.div>
     </motion.div>
   );
 };
 
-// --- MAIN COMPONENT ---
+/* -------------------- MAIN -------------------- */
 export default function CaseStudies() {
-  const [expanded, setExpanded] = useState({});
   const [activeStudy, setActiveStudy] = useState(null);
 
-  const toggleExpand = (id) => {
-    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
   return (
-    <section className="px-6 md:px-16 py-20 bg-gradient-to-b from-[#e3e7ec] to-[#cbd3d9]">
-      
-      {/* Heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-14"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-wide uppercase">
-          Industrial Case Studies
-        </h2>
-        <p className="text-gray-700 mt-4 max-w-2xl mx-auto text-lg">
-          Real-world implementations transforming industries using modern software and automation.
-        </p>
-        <div className="w-32 h-[4px] bg-gray-800 mx-auto mt-6 rounded-full"></div>
-      </motion.div>
-
-      {/* Case Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {caseStudies.map((study) => (
-          <motion.div
-            key={study.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            whileHover={{ scale: 1.03 }}
-            className="bg-white/70 backdrop-blur-2xl shadow-xl border border-gray-300 rounded-2xl p-8 hover:shadow-2xl hover:border-gray-500 transition-all"
-          >
-            <h3 className="text-2xl font-semibold text-gray-900 mb-3">{study.title}</h3>
-
-            <p className="text-gray-700 mb-3 text-[15px]">{study.description}</p>
-
-            {expanded[study.id] && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                transition={{ duration: 0.4 }}
-                className="space-y-2 text-gray-800 text-[15px] mb-5"
-              >
-                <p><strong>Problem:</strong> {study.problem}</p>
-                <p><strong>Approach:</strong> {study.approach}</p>
-                <p><strong>Solution:</strong> {study.solution}</p>
-                <p><strong>Result:</strong> {study.result}</p>
-                <p><strong>Impact:</strong> {study.impact}</p>
-              </motion.div>
-            )}
-
-            <button
-              onClick={() => toggleExpand(study.id)}
-              className="text-gray-800 font-semibold underline text-sm mb-4"
-            >
-              {expanded[study.id] ? "Read Less" : "Read More"}
-            </button>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {study.tech.map((t, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-1.5 bg-orange-100 text-orange-800 rounded-full text-xs uppercase font-semibold"
-                >
-                  {t}
-                </span>
-              ))}
+    <LayoutGroup>
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          {/* Hero */}
+          <div className="text-center mb-16">
+            <div className="flex justify-center items-center gap-3 text-orange-600 mb-4">
+              <FaTools />
+              <span className="tracking-widest uppercase text-sm font-semibold">
+                Industrial Excellence
+              </span>
             </div>
+            <h1 className="text-4xl sm:text-6xl font-black mb-4">
+              Case Studies
+            </h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Real-world industrial transformations powered by technology.
+            </p>
+          </div>
 
-            <motion.button
-              whileHover={{ x: 6 }}
-              className="flex items-center gap-2 text-orange-600 font-semibold hover:text-orange-700 transition-all text-[15px]"
-              onClick={() => setActiveStudy(study)}
-            >
-              View Full Case Study <FaArrowRight />
-            </motion.button>
-          </motion.div>
-        ))}
-      </div>
+          {/* Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {caseStudies.map((study) => (
+              <motion.div
+                key={study.id}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setActiveStudy(study)}
+                className="bg-white rounded-3xl shadow-xl cursor-pointer overflow-hidden border"
+              >
+                <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-8 text-white">
+                  {study.icon}
+                  <h3 className="text-2xl font-bold mt-4">
+                    {study.title}
+                  </h3>
+                </div>
 
-      {/* MODAL RENDER */}
-      <AnimatePresence>
-        {activeStudy && (
-          <Modal study={activeStudy} onClose={() => setActiveStudy(null)} />
-        )}
-      </AnimatePresence>
-    </section>
+                <div className="p-8">
+                  <p className="text-gray-700 mb-6">
+                    {study.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {study.tech.slice(0, 4).map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                    View Case Study <FaArrowRight />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {activeStudy && (
+            <Modal study={activeStudy} onClose={() => setActiveStudy(null)} />
+          )}
+        </AnimatePresence>
+      </section>
+    </LayoutGroup>
   );
 }
-
-
