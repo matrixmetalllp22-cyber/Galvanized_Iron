@@ -204,13 +204,13 @@ export default function PhotoGalleryMasonry() {
   return (
     <>
       {/* PREMIUM SECTION */}
-      <section className="bg-gray-50 py-20 px-6 lg:px-8">
+      <section className="bg-black py-20 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
 
           {/* Elegant Heading */}
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">Photo Gallery</h2>
-            <p className="text-xl text-gray-600">Click any image to view in full size</p>
+            <h2 className="text-5xl font-bold text-white mb-4">Photo Gallery</h2>
+            <p className="text-xl text-white">Click any image to view in full size</p>
           </div>
 
           {/* THE PERFECT MASONRY GRID */}

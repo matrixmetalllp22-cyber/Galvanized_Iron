@@ -21,7 +21,7 @@ export default function Card({
       transition={{ delay, duration: 0.5 }}
       whileHover={hoverable ? { y: -4, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" } : undefined}
       className={`
-        bg-white/80 backdrop-blur-md border border-gray-200 
+        bg-black/80 backdrop-blur-md border border-black-200 
         rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300
         ${className}
       `}

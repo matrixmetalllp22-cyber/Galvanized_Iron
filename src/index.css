@@ -20,6 +20,11 @@ body {
   -webkit-touch-callout: none;
 }
 
+
+.amns-diagonal {
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
 /* @layer components {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
@@ -41,3 +46,12 @@ body {
     @apply text-gray-600 leading-relaxed;
   }
 } */
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

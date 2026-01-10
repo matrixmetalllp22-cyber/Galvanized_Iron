@@ -111,11 +111,11 @@ const Modal = ({ study, onClose }) => {
         animate={{ scale: 1 }}
         exit={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 120 }}
-        className="bg-white rounded-3xl w-full max-w-5xl overflow-hidden"
+        className="bg-black rounded-3xl w-full max-w-5xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 sm:p-12">
+        <div className="bg-gradient-to-br from-orange-400 to-orange-500 text-white p-8 sm:p-12">
           {study.icon}
           <h2 className="text-3xl sm:text-4xl font-black mt-6">
             {study.title}
@@ -178,7 +178,7 @@ export default function CaseStudies() {
 
   return (
     <LayoutGroup>
-      <section className="py-16 sm:py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-black min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           {/* Hero */}
           <div className="text-center mb-16">
@@ -188,7 +188,7 @@ export default function CaseStudies() {
                 Industrial Excellence
               </span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-black mb-4">
+            <h1 className="text-4xl text-white sm:text-6xl font-black mb-4">
               Case Studies
             </h1>
             <p className="text-gray-600 max-w-3xl mx-auto">
@@ -205,7 +205,7 @@ export default function CaseStudies() {
                 onClick={() => setActiveStudy(study)}
                 className="bg-white rounded-3xl shadow-xl cursor-pointer overflow-hidden border"
               >
-                <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-8 text-white">
+                <div className="bg-gradient-to-br from-orange-400 to-orange-500 p-8 text-white">
                   {study.icon}
                   <h3 className="text-2xl font-bold mt-4">
                     {study.title}

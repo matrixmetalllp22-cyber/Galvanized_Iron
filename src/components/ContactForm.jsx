@@ -232,10 +232,246 @@
 
 
 
+// import React, { useState } from "react";
+// import { motion } from "framer-motion";
+// import toast, { Toaster } from "react-hot-toast";
+// import { MdLocationPin, MdPhone, MdMail } from "react-icons/md";
+
+// export default function ContactForm() {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     phone: "",
+//     message: "",
+//   });
+//   const [loading, setLoading] = useState(false);
+//   const [sent, setSent] = useState(false);
+
+//   const handleChange = (e) =>
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+//   const validateForm = () => {
+//     if (!formData.name.trim()) return toast.error("Name is required");
+//     if (!/\S+@\S+\.\S+/.test(formData.email))
+//       return toast.error("Valid email required");
+//     if (formData.phone.replace(/\D/g, "").length < 10)
+//       return toast.error("Valid phone number required");
+//     if (formData.message.trim().length < 10)
+//       return toast.error("Message must be at least 10 characters");
+//     return true;
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateForm()) return;
+
+//     setLoading(true);
+//     try {
+//       await fetch(
+//         "https://script.google.com/macros/s/AKfycbx4igNIL8RPzwel3naVQpqak7zjn_FvmMMVTWiWDRjmK-Imn3nUJblk02q8hCpm_dTM/exec",
+//         {
+//           method: "POST",
+//           mode: "no-cors",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify(formData),
+//         }
+//       );
+
+//       toast.success("Message sent successfully!");
+//       setSent(true);
+//       setFormData({ name: "", email: "", phone: "", message: "" });
+//       setTimeout(() => setSent(false), 5000);
+//     } catch {
+//       toast.error("Failed to send. Please try again.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <Toaster
+//         position="top-center"
+//         toastOptions={{
+//           style: { background: "#111", color: "#fff", borderRadius: "12px" },
+//           success: { duration: 4000 },
+//         }}
+//       />
+
+//       <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 max-w-7xl mx-auto px-5 py-10">
+//         {/* Form Card */}
+//         <motion.div
+//           initial={{ opacity: 0, x: -40 }}
+//           whileInView={{ opacity: 1, x: 0 }}
+//           viewport={{ once: true }}
+//           className="bg-white rounded-3xl shadow-2xl border border-orange-100 p-8 md:p-10 lg:p-12"
+//         >
+//           <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
+//             Send Us a Message
+//           </h2>
+
+//           <form onSubmit={handleSubmit} className="space-y-6">
+//             <Input label="Full Name" name="name" value={formData.name} onChange={handleChange} required />
+//             <Input
+//               label="Email Address"
+//               name="email"
+//               type="email"
+//               value={formData.email}
+//               onChange={handleChange}
+//               required
+//             />
+//             <Input
+//               label="Phone Number"
+//               name="phone"
+//               value={formData.phone}
+//               onChange={handleChange}
+//               required
+//             />
+
+//             {/* Message Textarea */}
+//             <div className="relative">
+//               <textarea
+//                 name="message"
+//                 rows={5}
+//                 value={formData.message}
+//                 onChange={handleChange}
+//                 required
+//                 className="peer w-full px-5 py-4 rounded-2xl border border-gray-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/20 outline-none transition-all resize-none bg-cream/50 placeholder-transparent"
+//                 placeholder=" "
+//               />
+//               <label
+//                 className="absolute left-5 top-4 text-gray-500 pointer-events-none transition-all duration-200
+//                   peer-focus:top-2 peer-focus:text-xs peer-focus:text-orange-400
+//                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+//                   peer-[:not(:placeholder-shown)]:top-2 
+//                   peer-[:not(:placeholder-shown)]:text-xs 
+//                   peer-[:not(:placeholder-shown)]:text-orange-400"
+//               >
+//                 Your Message
+//               </label>
+//             </div>
+
+//             <motion.button
+//               whileHover={{ scale: 1.02 }}
+//               whileTap={{ scale: 0.98 }}
+//               type="submit"
+//               disabled={loading || sent}
+//               className={`w-full py-5 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3
+//                 ${sent ? "bg-emerald-600 text-white" : "bg-orange-600 text-white shadow-xl hover:bg-orange-700"}
+//               `}
+//             >
+//               {loading ? (
+//                 "Sending..."
+//               ) : sent ? (
+//                 <>
+//                   Sent Successfully!
+//                 </>
+//               ) : (
+//                 "Send Message"
+//               )}
+//             </motion.button>
+//           </form>
+//         </motion.div>
+
+//         {/* Contact Info + Map */}
+//         <div className="space-y-10">
+//           {/* Info Cards */}
+//           <div className="grid gap-6">
+//             <InfoCard
+//               icon={<MdLocationPin className="text-4xl text-orange-400" />}
+//               title="Visit Our Office"
+//               content={
+//                 <>
+//                   <strong>MATRIX METALS LLP</strong>
+//                   <br />
+//                   Bengaluru, Karnataka
+//                   <br />
+//                   India
+//                 </>
+//               }
+//             />
+//             <InfoCard
+//               icon={<MdPhone className="text-4xl text-orange-400" />}
+//               title="Call Us"
+//               content={
+//                 <a href="tel:+91951440912" className="text-2xl font-bold text-orange-400 hover:underline">
+//                   +91 95144 40912
+//                 </a>
+//               }
+//             />
+//             <InfoCard
+//               icon={<MdMail className="text-4xl text-orange-400" />}
+//               title="Email Us"
+//               content={
+//                 <a
+//                   href="mailto:info@matrixmetals.in"
+//                   className="text-lg font-medium text-orange-400 hover:underline break-all"
+//                 >
+//                   info@matrixmetals.in
+//                 </a>
+//               }
+//             />
+//           </div>
+
+//           {/* Google Map */}
+//           <motion.div
+//             whileHover={{ scale: 1.02 }}
+//             transition={{ type: "spring" }}
+//             className="rounded-3xl overflow-hidden shadow-2xl border border-orange-100"
+//           >
+//             <iframe
+//               className="w-full h-80 md:h-96 grayscale hover:grayscale-0 transition-all duration-700"
+//               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.462445360588!2d77.52000387457595!3d13.023073087297223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3db890cace25%3A0x2caf2640275a9133!2sMATRIX%20METALS%20LLP!5e0!3m2!1sen!2sin!4v1732617180552!5m2!1sen!2sin"
+//               allowFullScreen=""
+//               loading="lazy"
+//               title="Matrix Metals Location"
+//             ></iframe>
+//           </motion.div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// // Reusable Floating Label Input (Fixed!)
+// const Input = ({ label, ...props }) => (
+//   <div className="relative">
+//     <input
+//       className="peer w-full px-5 py-4 rounded-2xl border border-gray-300 focus:border-orange-300 focus:ring-4 focus:ring-orange-400/20 outline-none transition-all bg-cream/50 placeholder-transparent"
+//       placeholder=" "
+//       {...props}
+//     />
+//     <label
+//       className="absolute left-5 top-4 text-gray-500 pointer-events-none transition-all duration-200
+//         peer-focus:top-2 peer-focus:text-xs peer-focus:text-orange-600
+//         peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+//         peer-[:not(:placeholder-shown)]:top-2 
+//         peer-[:not(:placeholder-shown)]:text-xs 
+//         peer-[:not(:placeholder-shown)]:text-orange-600"
+//     >
+//       {label}
+//     </label>
+//   </div>
+// );
+
+// // Info Card Component
+// const InfoCard = ({ icon, title, content }) => (
+//   <motion.div
+//     whileHover={{ x: 8 }}
+//     className="bg-white rounded-3xl p-8 shadow-xl border border-orange-100 flex gap-6 items-start"
+//   >
+//     <div className="p-4 bg-orange-100 rounded-2xl flex-shrink-0">{icon}</div>
+//     <div>
+//       <h3 className="text-xl font-bold text-black mb-2">{title}</h3>
+//       <div className="text-gray-700 leading-relaxed">{content}</div>
+//     </div>
+//   </motion.div>
+// );
+
+
+
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
-import { MdLocationPin, MdPhone, MdMail } from "react-icons/md";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -293,177 +529,91 @@ export default function ContactForm() {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: { background: "#111", color: "#fff", borderRadius: "12px" },
-          success: { duration: 4000 },
+          style: { background: "#000", color: "#fff" },
         }}
       />
 
-      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 max-w-7xl mx-auto px-5 py-10">
-        {/* Form Card */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-3xl shadow-2xl border border-orange-100 p-8 md:p-10 lg:p-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
-            Send Us a Message
-          </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-5xl"
+      >
+        <Input
+          label="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <Input label="Full Name" name="name" value={formData.name} onChange={handleChange} required />
-            <Input
-              label="Email Address"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <Input
-              label="Phone Number"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
+        <Input
+          label="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
 
-            {/* Message Textarea */}
-            <div className="relative">
-              <textarea
-                name="message"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="peer w-full px-5 py-4 rounded-2xl border border-gray-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/20 outline-none transition-all resize-none bg-cream/50 placeholder-transparent"
-                placeholder=" "
-              />
-              <label
-                className="absolute left-5 top-4 text-gray-500 pointer-events-none transition-all duration-200
-                  peer-focus:top-2 peer-focus:text-xs peer-focus:text-orange-400
-                  peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
-                  peer-[:not(:placeholder-shown)]:top-2 
-                  peer-[:not(:placeholder-shown)]:text-xs 
-                  peer-[:not(:placeholder-shown)]:text-orange-400"
-              >
-                Your Message
-              </label>
-            </div>
+        <Input
+          label="Contact Number"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+        />
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              disabled={loading || sent}
-              className={`w-full py-5 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3
-                ${sent ? "bg-emerald-600 text-white" : "bg-orange-600 text-white shadow-xl hover:bg-orange-700"}
-              `}
-            >
-              {loading ? (
-                "Sending..."
-              ) : sent ? (
-                <>
-                  Sent Successfully!
-                </>
-              ) : (
-                "Send Message"
-              )}
-            </motion.button>
-          </form>
-        </motion.div>
+        <div className="hidden md:block" />
 
-        {/* Contact Info + Map */}
-        <div className="space-y-10">
-          {/* Info Cards */}
-          <div className="grid gap-6">
-            <InfoCard
-              icon={<MdLocationPin className="text-4xl text-orange-400" />}
-              title="Visit Our Office"
-              content={
-                <>
-                  <strong>MATRIX METALS LLP</strong>
-                  <br />
-                  Bengaluru, Karnataka
-                  <br />
-                  India
-                </>
-              }
-            />
-            <InfoCard
-              icon={<MdPhone className="text-4xl text-orange-400" />}
-              title="Call Us"
-              content={
-                <a href="tel:+91951440912" className="text-2xl font-bold text-orange-400 hover:underline">
-                  +91 95144 40912
-                </a>
-              }
-            />
-            <InfoCard
-              icon={<MdMail className="text-4xl text-orange-400" />}
-              title="Email Us"
-              content={
-                <a
-                  href="mailto:info@matrixmetals.in"
-                  className="text-lg font-medium text-orange-400 hover:underline break-all"
-                >
-                  info@matrixmetals.in
-                </a>
-              }
-            />
-          </div>
-
-          {/* Google Map */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring" }}
-            className="rounded-3xl overflow-hidden shadow-2xl border border-orange-100"
-          >
-            <iframe
-              className="w-full h-80 md:h-96 grayscale hover:grayscale-0 transition-all duration-700"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.462445360588!2d77.52000387457595!3d13.023073087297223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3db890cace25%3A0x2caf2640275a9133!2sMATRIX%20METALS%20LLP!5e0!3m2!1sen!2sin!4v1732617180552!5m2!1sen!2sin"
-              allowFullScreen=""
-              loading="lazy"
-              title="Matrix Metals Location"
-            ></iframe>
-          </motion.div>
+        <div className="md:col-span-2">
+          <textarea
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Message"
+            className="
+              w-full bg-transparent
+              border border-gray-700
+              px-4 py-6
+              text-white placeholder-gray-500
+              focus:outline-none focus:border-white
+              focus:shadow-[0_0_0_1px_rgba(255,255,255,0.15)]
+              transition
+            "
+          />
         </div>
-      </div>
+
+        <div className="md:col-span-2 flex justify-end mt-8">
+          <button
+            type="submit"
+            disabled={loading || sent}
+            className="
+              uppercase tracking-widest text-sm
+              text-gray-300
+              border-b border-gray-500
+              hover:border-white hover:text-white
+              pb-2
+              transition-all duration-300
+              flex items-center gap-2
+            "
+          >
+            {loading ? "Sending..." : sent ? "Submitted" : "Submit ↗"}
+          </button>
+        </div>
+      </form>
     </>
   );
 }
 
-// Reusable Floating Label Input (Fixed!)
+/* Minimal Input – UI Only */
 const Input = ({ label, ...props }) => (
-  <div className="relative">
-    <input
-      className="peer w-full px-5 py-4 rounded-2xl border border-gray-300 focus:border-orange-300 focus:ring-4 focus:ring-orange-400/20 outline-none transition-all bg-cream/50 placeholder-transparent"
-      placeholder=" "
-      {...props}
-    />
-    <label
-      className="absolute left-5 top-4 text-gray-500 pointer-events-none transition-all duration-200
-        peer-focus:top-2 peer-focus:text-xs peer-focus:text-orange-600
-        peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
-        peer-[:not(:placeholder-shown)]:top-2 
-        peer-[:not(:placeholder-shown)]:text-xs 
-        peer-[:not(:placeholder-shown)]:text-orange-600"
-    >
-      {label}
-    </label>
-  </div>
-);
-
-// Info Card Component
-const InfoCard = ({ icon, title, content }) => (
-  <motion.div
-    whileHover={{ x: 8 }}
-    className="bg-white rounded-3xl p-8 shadow-xl border border-orange-100 flex gap-6 items-start"
-  >
-    <div className="p-4 bg-orange-100 rounded-2xl flex-shrink-0">{icon}</div>
-    <div>
-      <h3 className="text-xl font-bold text-black mb-2">{title}</h3>
-      <div className="text-gray-700 leading-relaxed">{content}</div>
-    </div>
-  </motion.div>
+  <input
+    {...props}
+    placeholder={label}
+    className="
+      w-full bg-transparent
+      border border-gray-700
+      px-4 py-4
+      text-white placeholder-gray-500
+      focus:outline-none focus:border-white
+      focus:shadow-[0_0_0_1px_rgba(255,255,255,0.15)]
+      transition
+    "
+  />
 );

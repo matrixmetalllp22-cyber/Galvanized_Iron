@@ -9,11 +9,13 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import Industries from "./pages/Industries";
-import Careers from "./pages/Careers";
+import CertificationSection from "./pages/Certificaton";
+// import Careers from "./pages/Careers";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Applications from "./pages/Applications";
 import CaseStudies from "./pages/CaseStudies";
+import ClientsSection from "./pages/clientsSection";
 
 // Service Pages
 import Slitting from "./pages/services/Slitting";
@@ -21,9 +23,11 @@ import CutToLength from "./pages/services/CutToLength";
 import Packing from "./pages/services/Packing";
 import Blanking from "./pages/services/Blanking";
 
+
 // Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ClientsSlider from "./pages/clientsSection";
 import CommandPalette from "./components/CommandPalette";
 
 function AppContent() {
@@ -64,17 +68,20 @@ function AppContent() {
       <div className="flex flex-col min-h-screen select-none">
         <Header />
         <CommandPalette />
-        <main className="flex-grow pt-16 bg-gradient-to-br from-slate-50 to-white-300 :from-slate-900 dark:to-white   transition-colors duration-300">
+        <main className="grow pt-16 bg-linear-to-br from-slate-50 to-white-300 :from-slate-900 dark:to-white   transition-colors duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/industries" element={<Industries />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/news" element={<News />} />
+            {/* <Route path="/careers" element={<Careers />} /> */}
+            {/* <Route path="/news" element={<News />} /> */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/applications" element={<Applications />} />
             <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/Certificaton" element={<CertificationSection />} />
+            <Route path="/clientsSection" element={<ClientsSection />} />
+
 
             {/* Service Routes */}
             <Route path="/services/slitting" element={<Slitting />} />

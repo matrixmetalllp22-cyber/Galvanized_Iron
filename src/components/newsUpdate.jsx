@@ -201,7 +201,7 @@ export default function NewsUpdate() {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -180, opacity: 0 }}
             transition={{ type: "spring", stiffness: 80, damping: 14 }}
-            className="w-full h-[520px] flex flex-col md:flex-row justify-center items-center px-10 md:px-20 gap-8 bg-gradient-to-br from-black/80 via-black/60 to-black/40 text-white"
+            className="w-full h-[520px] flex flex-col md:flex-row justify-center items-center px-10 md:px-20 gap-8 bg-linear-to-br from-black/80 via-black/60 to-black/40 text-white"
           >
             {textSlides[current].map((item, index) => (
               <div key={index} className="md:w-1/2 flex flex-col justify-center gap-4">
@@ -238,7 +238,7 @@ export default function NewsUpdate() {
   animate={{ x: 0, opacity: 1 }}
   exit={{ x: -180, opacity: 0 }}
   transition={{ type: "spring", stiffness: 80, damping: 14 }}
-      className="w-full h-[520px] flex gap-3 px-4 py-4 bg-gradient-to-br from-black/80 via-black/60 to-black/40 text-white"
+      className="w-full h-[520px] flex gap-3 px-4 py-4 bg-linear-to-br from-black/80 via-black/60 to-black/40 text-white"
 >
       {newsData[current].images.slice(0, 2).map((img, i) => (
         <div
@@ -286,4 +286,114 @@ export default function NewsUpdate() {
 
 
 
+// import React, { useState, useEffect } from "react";
+// import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+// import { motion, AnimatePresence } from "framer-motion";
 
+// const newsData = [
+//   {
+//     title: "ALUMINIUM ALLOY 3XXX & 5XXX FOOD PACKAGING",
+//     text: "Demand for aluminium food-grade alloys continues to rise due to recyclability, hygiene, and sustainability benefits.",
+//     image: "/Images/Aluminium Alloy 3xxx & 5xxx Series Gain Popularity in Food Packaging.jpeg",
+//   },
+//   {
+//     title: "AUTO & EV MANUFACTURERS SHIFT TOWARD LIGHTWEIGHT ALUMINIUM SHEETS",
+//     text: "Major automotive companies have increased their procurement of lightweight aluminium alloys to improve fuel efficiency and meet BS6 emission norms.",
+//     image: "/Images/Aluminium Recycling Capacity Expands Across South India.jpeg",
+//   },
+// ];
+
+// export default function NewsUpdate() {
+//   const [current, setCurrent] = useState(0);
+
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setCurrent((c) => (c + 1) % newsData.length);
+//     }, 5000);
+//     return () => clearInterval(timer);
+//   }, []);
+
+//   return (
+//     <section className="relative w-full bg-[#1f2d3d] z-10 mt-20">
+//       <div className="relative max-w-[1400px] mx-auto overflow-hidden">
+//         {/* Arrows */}
+//         <button
+//           onClick={() =>
+//             setCurrent((c) => (c - 1 + newsData.length) % newsData.length)
+//           }
+//           className="absolute left-4 top-1/2 -translate-y-1/2 z-20
+//                      bg-white/70 p-2 rounded-full hover:bg-orange-500"
+//         >
+//           <FiChevronLeft />
+//         </button>
+
+//         <button
+//           onClick={() =>
+//             setCurrent((c) => (c + 1) % newsData.length)
+//           }
+//           className="absolute right-4 top-1/2 -translate-y-1/2 z-20
+//                      bg-white/70 p-2 rounded-full hover:bg-orange-500"
+//         >
+//           <FiChevronRight />
+//         </button>
+
+//         <AnimatePresence mode="wait">
+//           <motion.div
+//             key={current}
+//             initial={{ opacity: 0, x: 60 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             exit={{ opacity: 0, x: -60 }}
+//             transition={{ duration: 0.4 }}
+//             className="grid grid-cols-1 md:grid-cols-2
+//                        h-[380px]"
+//           >
+//             {/* TEXT */}
+//             <div className="flex flex-col justify-center px-10 text-white
+//                             bg-gradient-to-br from-black/80 to-black/50">
+//               <p className="uppercase text-sm tracking-wider text-gray-300 mb-2">
+//                 Latest News
+//               </p>
+//               <h2 className="text-2xl font-bold leading-snug mb-4">
+//                 {newsData[current].title}
+//               </h2>
+//               <p className="text-gray-300 text-sm leading-relaxed max-w-md">
+//                 {newsData[current].text}
+//               </p>
+//             </div>
+
+//             {/* IMAGE */}
+//             {/* <div className="w-full h-full overflow-hidden">
+//               <img
+//                 src={newsData[current].image}
+//                 alt="news"
+//                 className="w-full h-full object-cover"
+//               />
+//             </div> */}
+// <div className="w-full h-full flex items-center justify-center bg-white">
+//   <img
+//     src={newsData[current].image}
+//     alt="news"
+//     className="max-w-full max-h-full object-contain"
+//   />
+// </div>
+
+
+//           </motion.div>
+//         </AnimatePresence>
+
+//         {/* Pagination */}
+//         <div className="flex justify-center gap-2 py-3 bg-white/20">
+//           {newsData.map((_, i) => (
+//             <span
+//               key={i}
+//               onClick={() => setCurrent(i)}
+//               className={`w-2.5 h-2.5 rounded-full cursor-pointer ${
+//                 i === current ? "bg-orange-500" : "bg-gray-400"
+//               }`}
+//             />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }

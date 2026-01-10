@@ -1,170 +1,246 @@
+// import { useState } from "react";
+// import { Link } from "react-router-dom";
+
+// export default function Header() {
+//   const [open, setOpen] = useState(false);
+
+//   const closeMenu = () => setOpen(false);
+
+//   return (
+//     <>
+//       {/* Top Bar */}
+//       <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur">
+//         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+//           {/* Logo */}
+//           <Link
+//             to="/"
+//             onClick={closeMenu}
+//             className="text-white font-extrabold text-2xl leading-none"
+//           >
+//             MATRIX <br /> METALS
+//           </Link>
+
+//           {/* Menu Button */}
+//           <button
+//             onClick={() => setOpen(true)}
+//             className="text-white uppercase tracking-widest text-sm"
+//           >
+//             Menu
+//           </button>
+//         </div>
+//       </header>
+
+//       {/* Fullscreen Menu */}
+//       {open && (
+//         <div className="fixed inset-0 z-[999] bg-black text-white">
+//           {/* Top */}
+//           <div className="flex justify-between items-start px-10 py-8">
+//             <div className="font-extrabold text-2xl leading-none">
+//               MATRIX <br /> METALS
+//             </div>
+
+//             <button
+//               onClick={closeMenu}
+//               className="uppercase tracking-widest text-sm opacity-70 hover:opacity-100 text-orange-400"
+//             >
+//               Close
+//             </button>
+//           </div>
+
+//           {/* Content */}
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 px-10 md:px-20 mt-10">
+//             {/* LEFT MENU */}
+//             <div className="space-y-6 text-4xl font-light">
+//               {[
+//                 { label: "Home", path: "/" },
+//                 { label: "Company", path: "/about" },
+//                 // { label: "Products", path: "/products" },
+//                 { label: "Quality", path: "/industries" },
+//                 { label: "Services", path: "/products" },
+//                 { label: "Applications", path: "/applications" },
+//                 { label: "Case Studies", path: "/case-studies" },
+//                 { label: "Clients", path: "/clientsSection" },
+//                 { label: "Certification", path: "/Certificaton" },
+//                 // { label: "Newsroom", path: "/news" },
+//                 // { label: "Careers", path: "/careers" },
+//                 { label: "Contact", path: "/contact" },
+//               ].map((item, i) => (
+//                 <Link
+//                   key={item.label}
+//                   to={item.path}
+//                   onClick={closeMenu}
+//                   className="flex gap-4 hover:text-orange-500 transition"
+//                 >
+//                   <span className="text-sm opacity-50 mt-2">
+//                     {String(i + 1).padStart(2, "0")}
+//                   </span>
+//                   {item.label}
+//                 </Link>
+//               ))}
+//             </div>
+
+//             {/* RIGHT MENU */}
+//             <div className="space-y-6 text-2xl opacity-100">
+//               <p className="hover:text-white cursor-pointer">
+//                Matrix Metals Limited
+//               </p>
+
+//               {/* <Link to="/news" onClick={closeMenu} className="hover:text-white">
+//                 Press Releases
+//               </Link> <br /> */}
+
+//               <Link to="/news" onClick={closeMenu} className="hover:text-white">
+//                 Matrix metals Stories /
+//               </Link>
+
+//               <Link to="/industries" onClick={closeMenu} className="hover:text-white">
+//                 Locations  /
+//               </Link>
+
+//               {/* <Link to="/careers" onClick={closeMenu} className="hover:text-white">
+//                 Careers
+//               </Link> */}
+
+//               <Link to="/contact" onClick={closeMenu} className="hover:text-white">
+//                 Contact Us
+//               </Link>
+
+//               <div className="pt-6 space-y-2 text-sm">
+//                 <p>contact@matrixmetals.in</p>
+//                 <p>1800 309 8905</p>
+//                 <p>+91 72084 14333</p>
+//               </div>
+
+//               {/* Socials */}
+//               <div className="flex gap-6 pt-6 text-xl opacity-70">
+//                 <span>f</span>
+//                 <span>in</span>
+//                 <span>X</span>
+//                 <span>▶</span>
+//                 <span>💬</span>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// }
 
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const lastY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY || 0;
-      // hide when scrolling down and past 80px, show when scrolling up
-      if (currentY > lastY.current && currentY > 80) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
-      lastY.current = currentY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Products & Solutions", href: "/products" },
-    { name: "Quality", href: "/industries" },
-    { name: "News & Media", href: "/news" },
-    { name: "Contact", href: "/contact" },
-    { name: "Applications", href: "/applications" },
-    { name: "Case Studies", href: "/case-studies" },
-  ];
+  const [open, setOpen] = useState(false);
+  const closeMenu = () => setOpen(false);
 
   return (
-    <header className={`fixed w-full top-0 z-50 shadow-md transform transition-transform duration-300 ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
-      {/* --- Top Contact Bar --- */}
-      <div className="w-full bg-gradient-to-r from-slate-800 to-slate-700 dark:from-white-900 dark:to-gray-950 text-gray-100 text-sm py-2 px-6 flex justify-between items-center transition-colors duration-300">
-        <div className="flex items-center space-x-4">
-          <span className="flex items-center space-x-2">
-            <svg
-              className="w-4 h-4 text-orange-400"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M16 12H8m8 0a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            <a href="mailto:info@matrixmetals.com" className="hover:text-orange-300 transition-colors">
-              info@matrixmetals.com
-            </a>
-          </span>
+    <>
+      {/* TOP BAR */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+          {/* Logo */}
+          <Link
+            to="/"
+            onClick={closeMenu}
+            className="text-white font-extrabold text-xl sm:text-2xl leading-tight"
+          >
+            MATRIX <br /> METALS
+          </Link>
+
+          {/* Menu Button */}
+          <button
+            onClick={() => setOpen(true)}
+            className="text-white uppercase tracking-widest text-xs sm:text-sm"
+          >
+            Menu
+          </button>
         </div>
+      </header>
 
-        <div className="flex items-center space-x-4">
-          <span className="flex items-center space-x-2">
-            <svg
-              className="w-4 h-4 text-orange-400"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 5a2 2 0 012-2h2.586a1 1 0 01.707.293l2.414 2.414A2 2 0 0111 7.414V10a2 2 0 01-.293.707l-1.414 1.414a16.001 16.001 0 007.586 7.586l1.414-1.414A2 2 0 0119 17h2.586a1 1 0 01.707.293l2.414 2.414A1 1 0 0124 21.414V22a2 2 0 01-2 2h-1c-9.941 0-18-8.059-18-18V5z"
-              />
-            </svg>
-            <a href="tel:+911234567890" className="hover:text-orange-300 transition-colors">
-              +91 12345 67890
-            </a>
-          </span>
-        </div>
-      </div>
-
-      {/* --- Main Navigation --- */}
-      <nav className="bg-white/80 dark:bg-slate-700/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3 md:py-4">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-slate-400">
-                Matrix Metals
-              </span>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-slate-700 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-all duration-200 hover:underline underline-offset-4"
-                >
-                  {item.name}
-                </Link>
-              ))}
-              
-              {/* Theme toggle removed (dark mode disabled) */}
+      {/* FULLSCREEN MENU */}
+      {open && (
+        <div className="fixed inset-0 z-[999] bg-black text-white overflow-y-auto">
+          {/* TOP */}
+          <div className="flex justify-between items-start px-4 sm:px-10 py-6 sm:py-8">
+            <div className="font-extrabold text-xl sm:text-2xl leading-tight">
+              MATRIX <br /> METALS
             </div>
 
-            {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-md text-slate-700 dark:text-gray-100 hover:text-orange-700 dark:hover:text-orange-400 transition-colors"
+              onClick={closeMenu}
+              className="uppercase tracking-widest text-xs sm:text-sm text-orange-400 hover:opacity-80"
             >
-              {!isOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              )}
+              Close
             </button>
           </div>
-        </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden bg-white dark:bg-slate-800 shadow-md border-t border-slate-100 dark:border-slate-700 transition-colors duration-300">
-            <div className="px-4 pt-2 pb-4 space-y-1">
-              {navigation.map((item) => (
+          {/* CONTENT */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-4 sm:px-10 md:px-20 pb-20">
+            
+            {/* LEFT MENU */}
+            <div className="space-y-5 sm:space-y-6 text-2xl sm:text-3xl md:text-4xl font-light">
+              {[
+                { label: "Home", path: "/" },
+                { label: "Company", path: "/about" },
+                { label: "Quality", path: "/industries" },
+                { label: "Services", path: "/products" },
+                { label: "Applications", path: "/applications" },
+                { label: "Case Studies", path: "/case-studies" },
+                { label: "Clients", path: "/clientsSection" },
+                { label: "Certification", path: "/Certificaton" },
+                { label: "Contact", path: "/contact" },
+              ].map((item, i) => (
                 <Link
-                  key={item.name}
-                  to={item.href}
-                  className="block px-4 py-2 text-slate-700 dark:text-gray-100 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:text-orange-700 dark:hover:text-orange-400 rounded-md transition-colors"
-                  onClick={() => setIsOpen(false)}
+                  key={item.label}
+                  to={item.path}
+                  onClick={closeMenu}
+                  className="flex gap-4 hover:text-orange-500 transition"
                 >
-                  {item.name}
+                  <span className="text-xs sm:text-sm opacity-50 mt-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {item.label}
                 </Link>
               ))}
             </div>
+
+            {/* RIGHT MENU */}
+            <div className="space-y-5 sm:space-y-6 text-lg sm:text-xl md:text-2xl">
+              <p className="font-medium">Matrix Metals Limited</p>
+
+              <Link to="/news" onClick={closeMenu} className="hover:text-orange-400 transition">
+                Matrix Metals Stories /
+              </Link>
+
+              <Link to="/industries" onClick={closeMenu} className="hover:text-orange-400 transition">
+                Locations /
+              </Link>
+
+              <Link to="/contact" onClick={closeMenu} className="hover:text-orange-400 transition">
+                Contact Us
+              </Link>
+
+              {/* CONTACT */}
+              <div className="pt-4 space-y-1 text-sm sm:text-base opacity-80">
+                <p>contact@matrixmetals.in</p>
+                <p>1800 309 8905</p>
+                <p>+91 72084 14333</p>
+              </div>
+
+              {/* SOCIALS */}
+              <div className="flex gap-5 pt-6 text-xl opacity-70">
+                <span className="hover:opacity-100 cursor-pointer">f</span>
+                <span className="hover:opacity-100 cursor-pointer">in</span>
+                <span className="hover:opacity-100 cursor-pointer">X</span>
+                <span className="hover:opacity-100 cursor-pointer">▶</span>
+                <span className="hover:opacity-100 cursor-pointer">💬</span>
+              </div>
+            </div>
           </div>
-        )}
-      </nav>
-    </header>
+        </div>
+      )}
+    </>
   );
 }

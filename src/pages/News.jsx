@@ -870,17 +870,3 @@ const AluminumNewsDashboard = () => {
 };
 
 export default AluminumNewsDashboard;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
