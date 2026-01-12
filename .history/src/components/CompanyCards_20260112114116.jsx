@@ -308,7 +308,7 @@ export default function CompanySlider() {
                 onClick={() => navigate(item.link)}
                 className="
                   snap-start
-                  w-[220px] sm:w-60 md:w-[260px]
+                  w-[220px] sm:w-[240px] md:w-[260px]
                   h-[300px] md:h-[360px]
                   bg-white/5
                   cursor-pointer

@@ -1077,8 +1077,7 @@ const sections = [
     title: "Quality Policy", 
     subtitle: "Precision is not optional — it is absolute.", 
     points: ["100% inspection with automated vision systems", "Full material traceability via blockchain ledger", "In-house NABL-accredited metallurgical lab", "Real-time SPC and Six Sigma Black Belt oversight"],
-    imageUrl: "https://images.squarespace-cdn.com/content/v1/63c1c82661516f4176b212fa/4ca9c917-36bf-4462-a063-c45a5285bb6c/PRESS+BRAKE3+%282%29.jpg"
-    // imageUrl: "https://newmexico-metals.com/wp-content/uploads/2023/12/worker-metal-factory-is-taking-measurements-piece-rail.jpg"
+    imageUrl: "https://newmexico-metals.com/wp-content/uploads/2023/12/worker-metal-factory-is-taking-measurements-piece-rail.jpg"
   },
 ];
 
