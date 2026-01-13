@@ -437,9 +437,136 @@
 
 
 
+// import React, { useRef } from "react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { motion } from "framer-motion";
+
+// export default function ManagementTeam() {
+//   const sliderRef = useRef(null);
+
+//   const scroll = (dir) => {
+//     sliderRef.current?.scrollBy({
+//       left: dir === "left" ? -320 : 320,
+//       behavior: "smooth",
+//     });
+//   };
+
+//   return (
+//     <section className="bg-black py-24 px-6">
+//       <div className="max-w-7xl mx-auto">
+
+//         {/* SECTION TITLE */}
+//         <div className="text-center mb-16">
+//           <h2 className="text-white text-2xl font-semibold tracking-wide">
+//             Management Committee
+//           </h2>
+//         </div>
+
+//         <div className="relative">
+
+//           {/* LEFT ARROW */}
+//           <button
+//             onClick={() => scroll("left")}
+//             className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10
+//                        bg-zinc-900/80 backdrop-blur p-3 rounded-full"
+//           >
+//             <ChevronLeft className="text-white" size={20} />
+//           </button>
+
+//           {/* SLIDER */}
+//           <div
+//             ref={sliderRef}
+//             className="flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+//           >
+//             {[1, 2, 3, 4].map((_, index) => (
+//               <motion.div
+//                 key={index}
+//                 whileHover={{ y: -10 }}
+//                 className="
+//                   min-w-[300px] snap-start
+//                   rounded-2xl
+//                   bg-linear-to-b from-zinc-900 to-black
+//                   border border-white/10
+//                   overflow-hidden
+//                   cursor-pointer
+//                 "
+//               >
+//                 {/* IMAGE */}
+//                 <div className="h-[260px] flex items-center justify-center bg-black">
+//                   <img
+//                     src="/Images/safety-people.svg"
+//                     alt="Management Focus"
+//                     className="max-h-[200px] opacity-90"
+//                   />
+//                 </div>
+
+//                 {/* CONTENT */}
+//                 <div className="p-6">
+//                   <h4 className="text-orange-500 text-lg font-semibold mb-3">
+//                     Safety First
+//                   </h4>
+
+//                   <p className="text-gray-400 text-sm leading-relaxed mb-6">
+//                     Health and Safety supersede everything else – a belief that
+//                     we stand by and an ecosystem we foster across operations.
+//                   </p>
+
+//                   <div className="inline-flex items-center gap-3 group">
+//                     <span className="text-orange-500 text-lg group-hover:translate-x-1 transition">
+//                       →
+//                     </span>
+//                     <span className="uppercase tracking-widest text-xs text-gray-400 group-hover:text-white transition">
+//                       Know More
+//                     </span>
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+
+//           {/* RIGHT ARROW */}
+//           <button
+//             onClick={() => scroll("right")}
+//             className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10
+//                        bg-zinc-900/80 backdrop-blur p-3 rounded-full"
+//           >
+//             <ChevronRight className="text-white" size={20} />
+//           </button>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
 import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+
+const focuses = [
+  {
+    title: "Safety First",
+    description: "Health and Safety supersede everything else – a belief that we stand by and an ecosystem we foster across operations.",
+    image: "https://uxwing.com/wp-content/themes/uxwing/download/crime-security-military-law/safety-icon.svg",
+  },
+  {
+    title: "Innovation Driven",
+    description: "Embracing cutting-edge technologies and creative problem-solving to drive progress and efficiency in all our endeavors.",
+    image: "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/innovation-icon.svg",
+  },
+  {
+    title: "Sustainability Focused",
+    description: "Committed to environmentally responsible practices that ensure long-term viability for our planet and future generations.",
+    image: "https://uxwing.com/wp-content/themes/uxwing/download/nature-and-environment/sustainable-icon.svg",
+  },
+  {
+    title: "Excellence Oriented",
+    description: "Pursuing the highest standards of quality and performance, continuously improving to achieve outstanding results.",
+    image: "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/quality-assurance-icon.svg",
+  },
+];
 
 export default function ManagementTeam() {
   const sliderRef = useRef(null);
@@ -478,14 +605,14 @@ export default function ManagementTeam() {
             ref={sliderRef}
             className="flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
           >
-            {[1, 2, 3, 4].map((_, index) => (
+            {focuses.map((item, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -10 }}
                 className="
                   min-w-[300px] snap-start
                   rounded-2xl
-                  bg-linear-to-b from-zinc-900 to-black
+                  bg-gradient-to-b from-zinc-900 to-black
                   border border-white/10
                   overflow-hidden
                   cursor-pointer
@@ -494,21 +621,23 @@ export default function ManagementTeam() {
                 {/* IMAGE */}
                 <div className="h-[260px] flex items-center justify-center bg-black">
                   <img
-                    src="/Images/safety-people.svg"
-                    alt="Management Focus"
+                    src={item.image}
+                    alt={item.title}
                     className="max-h-[200px] opacity-90"
+                    style={{
+                      filter: "invert(100%) sepia(75%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(100%)"
+                    }}
                   />
                 </div>
 
                 {/* CONTENT */}
                 <div className="p-6">
                   <h4 className="text-orange-500 text-lg font-semibold mb-3">
-                    Safety First
+                    {item.title}
                   </h4>
 
                   <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                    Health and Safety supersede everything else – a belief that
-                    we stand by and an ecosystem we foster across operations.
+                    {item.description}
                   </p>
 
                   <div className="inline-flex items-center gap-3 group">
