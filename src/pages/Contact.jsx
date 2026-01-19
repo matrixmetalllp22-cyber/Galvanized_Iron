@@ -1,148 +1,87 @@
-
-// // import React from "react";
-// // import ContactForm from "../components/ContactForm";
-// // import { motion } from "framer-motion";
-
-// // export default function Contact() {
-// //   return (
-// //     <div className="relative min-h-screen bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 dark:from-slate-900 dark:via-slate-800 dark:to-gray-900 overflow-hidden transition-colors duration-300">
-
-// //       {/* Soft Glow Orbs */}
-// //       <div className="absolute top-20 left-5 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 
-// //       bg-slate-400/20 blur-3xl rounded-full animate-pulse"></div>
-
-// //       <div className="absolute bottom-10 right-5 w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 
-// //       bg-gray-400/20 blur-3xl rounded-full animate-pulse"></div>
-
-// //       {/* Page Wrapper */}
-// //       <motion.div
-// //         initial={{ opacity: 0, y: 40 }}
-// //         animate={{ opacity: 1, y: 0 }}
-// //         transition={{ duration: 0.8 }}
-// //         className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20"
-// //       >
-
-// //         {/* Heading */}
-// //         <div className="text-center mb-10 sm:mb-14 md:mb-16">
-// //           <h1
-// //             className="text-3xl sm:text-4xl md:text-6xl font-extrabold
-// //             bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 
-// //             bg-clip-text text-transparent tracking-tight drop-shadow-sm"
-// //           >
-// //             Get in Touch
-// //           </h1>
-
-// //           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-700 max-w-xl md:max-w-2xl mx-auto px-2">
-// //             Have questions or need assistance? We’re here to help you move forward.
-// //           </p>
-
-// //           <div className="w-20 sm:w-28 md:w-32 h-[3px] bg-gradient-to-r from-gray-500 to-gray-700 mx-auto mt-5 sm:mt-6 rounded-full shadow-sm"></div>
-// //         </div>
-
-// //         {/* Contact Form Card */}
-// //         <motion.div
-// //           initial={{ opacity: 0, scale: 0.94 }}
-// //           animate={{ opacity: 1, scale: 1 }}
-// //           transition={{ delay: 0.3, duration: 0.8 }}
-// //           className="
-// //             bg-white/60 backdrop-blur-xl 
-// //             border border-gray-300/40 
-// //             shadow-[0_6px_30px_rgba(0,0,0,0.15)]
-// //             rounded-2xl 
-// //             p-5 sm:p-8 md:p-10 lg:p-12
-// //             transition-all duration-500"
-// //         >
-// //           <ContactForm />
-// //         </motion.div>
-// //       </motion.div>
-// //     </div>
-// //   );
-// // }
-
-
-
-
-
-
-
-
-
-
 // import React from "react";
 // import ContactForm from "../components/ContactForm";
-// import { motion } from "framer-motion";
-// import { Sparkles } from "lucide-react";
 
 // export default function Contact() {
 //   return (
-//     <div className="relative min-h-screen bg-cream overflow-hidden">
-//       {/* Animated Background Orbs */}
-//       <motion.div
-//         animate={{ x: [0, 120, 0], y: [0, -80, 0] }}
-//         transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-//         className="absolute top-0 left-0 w-96 h-96 bg-orange-400/20 rounded-full blur-3xl"
-//       />
-//       <motion.div
-//         animate={{ x: [0, -100, 0], y: [0, 100, 0] }}
-//         transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-//         className="absolute bottom-0 right-0 w-80 h-80 bg-orange-400/25 rounded-full blur-3xl"
-//       />
+//     <div className="min-h-screen bg-black text-white relative overflow-hidden">
+//       {/* Subtle background gradient */}
+//       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 pointer-events-none" />
 
-//       <div className="relative z-10 max-w-7xl mx-auto px-5 py-16 md:py-24 lg:py-32">
-//         {/* Hero Heading */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 30 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9 }}
-//           className="text-center mb-16 md:mb-24"
-//         >
-//           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter">
-//             <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-//               Get in Touch
-//             </span>
-//           </h1>
-//           <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-//             Ready to start a project or have questions? We’re here to help.
-//           </p>
+//       <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-28">
+//         {/* Top Grid */}
+//         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+//           {/* Left Content */}
+//           <div>
+//             {/* Eyebrow */}
+//             <p className="text-sm tracking-[0.3em] text-gray-500 uppercase">
+//               Contact
+//             </p>
 
-//           <div className="flex justify-center mt-8 gap-4">
-//             {[...Array(4)].map((_, i) => (
-//               <motion.div
-//                 key={i}
-//                 animate={{ y: [0, -20, 0] }}
-//                 transition={{ duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.3 }}
-//               >
-//                 <Sparkles className="w-6 h-6 text-orange-400 opacity-60" />
-//               </motion.div>
-//             ))}
+//             {/* Heading */}
+//             <h1 className="mt-6 text-6xl md:text-7xl font-bold tracking-tight leading-[1.05]">
+//               Let’s build <br />
+//               something <span className="text-orange-400">great</span> together
+//             </h1>
+
+//             {/* Subtext */}
+//             <p className="mt-8 text-gray-400 text-base max-w-md leading-relaxed">
+//               Have a project in mind or need industrial metal solutions?  
+//               Reach out and our team will get back to you within 24 hours.
+//             </p>
+
+//             {/* Contact Info Card */}
+//             <div className="mt-12 space-y-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-8">
+//               <div>
+//                 <p className="text-xs tracking-widest uppercase text-gray-500">
+//                   Email
+//                 </p>
+//                 <p className="mt-2 text-lg text-gray-200">
+//                    matrixmetals.in
+//                 </p>
+//               </div>
+
+//               <div>
+//                 <p className="text-xs tracking-widest uppercase text-gray-500">
+//                   Phone
+//                 </p>
+//                 <p className="mt-2 text-lg text-gray-200">
+//                    1800 309 8905
+//                 </p>
+//                 <p className="text-lg text-gray-200">
+//                    +91 7208414333
+//                 </p>
+//               </div>
+
+//               <div>
+//                 <p className="text-xs tracking-widest uppercase text-gray-500">
+//                   Registered Office
+//                 </p>
+//                 <p className="mt-2 text-gray-300 leading-relaxed">
+//                   3RD PHASE, 139 & 140, 9TH MAIN ROAD, 100 Feet Road, <br />
+//                   Peenya, Bengaluru, <br />
+//                   India
+//                 </p>
+//               </div>
+//             </div>
 //           </div>
-//         </motion.div>
 
-//         {/* Form */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 50 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ delay: 0.4, duration: 0.9 }}
-//         >
-//           <ContactForm />
-//         </motion.div>
+//           {/* Right – Form */}
+//           <div>
+//             {/* Section Label */}
+//             <div className="mb-8 flex items-center gap-4">
+//               <div className="h-px w-16 bg-gray-700" />
+//               <span className="text-gray-400 text-xs tracking-widest uppercase">
+//                 Get in touch
+//               </span>
+//             </div>
+
+//             <ContactForm />
+//           </div>
+//         </div>
 //       </div>
-
-//       <style jsx>{`
-//         .bg-cream { background-color: #e6e1dcff; }
-//         @keyframes gradient-shift {
-//           0%, 100% { background-position: 0% 50%; }
-//           50% { background-position: 100% 50%; }
-//         }
-//         .bg-gradient-to-r {
-//           background-size: 200% 200%;
-//           animation: gradient-shift 12s ease infinite;
-//         }
-//       `}</style>
 //     </div>
 //   );
 // }
-
 
 
 
@@ -153,42 +92,90 @@ import ContactForm from "../components/ContactForm";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-        {/* Header Section */}
-        <div className="mb-24">
-          <h1 className="text-6xl md:text-7xl font-bold tracking-wider leading-tight">
-            Contact <br /> Us
-          </h1>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 pointer-events-none" />
 
-          <p className="mt-6 text-gray-400 text-sm max-w-md">
-            Let’s start a conversation. Tell us how we can help.
-          </p>
+      <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        {/* Top Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          {/* Left Content */}
+          <div>
+            {/* Eyebrow */}
+            <p className="text-sm tracking-[0.3em] text-gray-500 uppercase">
+              Contact
+            </p>
 
-          <div className="mt-10 space-y-3 text-2xl text-gray-300">
-            <p>📧 matrixmetals.in</p>
-            <p>📞 1800 309 8905</p>
-            <p>📱 +91 7208414333</p>
+            {/* Heading */}
+            <h1 className="mt-6 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05]">
+              Let’s build <br />
+              something <span className="text-orange-400">great</span> together
+            </h1>
+
+            {/* Subtext */}
+            <p className="mt-8 text-gray-400 text-base max-w-md leading-relaxed">
+              Have a project in mind or need industrial metal solutions?  
+              Reach out and our team will get back to you within 24 hours.
+            </p>
+
+            {/* Contact Info Card */}
+            <div className="mt-12 space-y-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 sm:p-8">
+              <div>
+                <p className="text-xs tracking-widest uppercase text-gray-500">
+                  Email
+                </p>
+                <a
+                  href="mailto:info@matrixmetals.in"
+                  className="mt-2 text-lg text-gray-200 hover:text-orange-400 transition"
+                >
+                  info@matrixmetals.in
+                </a>
+              </div>
+
+              <div>
+                <p className="text-xs tracking-widest uppercase text-gray-500">
+                  Phone
+                </p>
+                <a
+                  href="tel:18003098905"
+                  className="mt-2 text-lg text-gray-200 hover:text-orange-400 transition block"
+                >
+                  1800 309 8905
+                </a>
+                <a
+                  href="tel:+917208414333"
+                  className="text-lg text-gray-200 hover:text-orange-400 transition block"
+                >
+                  +91 7208414333
+                </a>
+              </div>
+
+              <div>
+                <p className="text-xs tracking-widest uppercase text-gray-500">
+                  Registered Office
+                </p>
+                <p className="mt-2 text-gray-300 leading-relaxed">
+                  3RD PHASE, 139 & 140, 9TH MAIN ROAD, 100 Feet Road, <br />
+                  Peenya, Bengaluru, <br />
+                  India
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-12 max-w-sm text-gray-400 text-2xl leading-relaxed">
-            <p className="text-white font-medium mb-2">Registered Office</p>
-            3RD PHASE, 139 & 140, 9TH MAIN ROAD, 100 Feet Road, <br />
-             Peenya, Bengaluru, <br />
-            India
+          {/* Right – Form */}
+          <div>
+            {/* Section Label */}
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-px w-16 bg-gray-700" />
+              <span className="text-gray-400 text-xs tracking-widest uppercase">
+                Get in touch
+              </span>
+            </div>
+
+            <ContactForm />
           </div>
         </div>
-
-        {/* Divider */}
-        <div className="mb-14 flex items-center gap-4">
-          <div className="h-px w-20 bg-gray-700" />
-          <span className="text-gray-400 text-s tracking-widest uppercase">
-            Get in touch
-          </span>
-        </div>
-
-        {/* Form Section */}
-        <ContactForm />
       </div>
     </div>
   );
