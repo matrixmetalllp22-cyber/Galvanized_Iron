@@ -1,555 +1,14 @@
-
-// // // // import React, { useState } from "react";
-// // // // import { motion } from "framer-motion";
-
-// // // // const leadership = [
-// // // //   { 
-// // // //     name: "Mr. Jeeteen Jain", 
-// // // //     role: "Managing Director", 
-// // // //     image: "/Images/jeeteen-jain.jpg",
-// // // //     bio: "Jeeteen Jain is a dynamic and visionary Managing Director whose leadership has been instrumental in shaping Matrix Metals LLP into a high-performance industrial powerhouse. With deep expertise in machinery integration, metal processing technologies, and strategic operations, he leads with precision, conviction, and uncompromising discipline. Jeeteen is known for transforming complex engineering challenges into executable strategies, driving excellence across every vertical of the organization. His aggressive pursuit of quality, innovation, and customer-centric execution has established Matrix Metals as a trusted name in India's advanced metal service sector. Under his stewardship, the company continues to scale aggressively, expand capabilities, and set new standards for operational superiority."
-// // // //   },
-// // // //   { 
-// // // //     name: "Mr. Dinesh Chopra", 
-// // // //     role: "Managing Director", 
-// // // //     image: "/Images/dinesh-chopra.jpg",
-// // // //     bio: "Dinesh Chopra brings strong industrial leadership and decades of market knowledge to Matrix Metals LLP, serving as a pillar of strategic direction, operational stability, and business growth. As Managing Director, he combines sharp commercial intelligence with a deep understanding of metal markets, customer needs, and production realities. His decisions are driven by clarity, discipline, and long-term business vision, enabling the company to establish a dominant presence in the metals ecosystem. Dinesh's leadership is defined by integrity, accountability, and a relentless commitment to delivering value — ensuring that Matrix Metals remains agile, competitive, and future-ready in a rapidly evolving industrial landscape."
-// // // //   },
-// // // // ];
-
-// // // // const team = [
-// // // //   { 
-// // // //     name: "Priyadarshini", 
-// // // //     role: "Head of Finance", 
-// // // //     image: "/Images/person1.jpg",
-// // // //     bio: "Priyadarshini is a financial strategist with exceptional command over fiscal planning, cost governance, compliance, and enterprise-level financial discipline. As the Finance Head of Matrix Metals LLP, she ensures the organization operates on a foundation of accuracy, transparency, and financial resilience. Her analytical strength and meticulous oversight empower the company to scale responsibly while maintaining strong profitability and risk control. Priyadarshini's leadership brings stability, sharp financial intelligence, and structured processes that support Matrix Metals' aggressive growth strategy and long-term sustainability."
-// // // //   },
-// // // //   { 
-// // // //     name: "Sangram", 
-// // // //     role: "Production Head", 
-// // // //     image: "/Images/person2.jpg",
-// // // //     bio: "Sangram is a seasoned production leader known for his commanding presence on the shop floor and his mastery over complex metal processing operations. As Production Head, he drives high-precision manufacturing with a strong focus on efficiency, discipline, and zero-defect execution. His ability to manage high-volume workloads, optimize processes, and enforce rigorous quality protocols makes him a cornerstone of the company's operational excellence. Sangram's leadership ensures that every coil processed under Matrix Metals adheres to the highest standards of accuracy, productivity, and industrial reliability."
-// // // //   },
-// // // //   { 
-// // // //     name: "Somnath", 
-// // // //     role: "Logistics Head", 
-// // // //     image: "/Images/person3.jpg",
-// // // //     bio: "Somnath is the backbone of Matrix Metals LLP's supply chain strength, leading logistics with strategic foresight, operational clarity, and uncompromising reliability. His expertise in material movement, dispatch management, and end-to-end coordination ensures seamless flow across all production cycles. Somnath's ability to maintain speed, accuracy, and system integrity — even under demanding timelines — positions him as a critical force behind the company's consistent on-time deliveries. His structured approach, discipline, and problem-solving capability make him an indispensable leader in sustaining Matrix Metals' high-performance output."
-// // // //   },
-// // // //   { 
-// // // //     name: "Balakumar", 
-// // // //     role: "Project Development Head", 
-// // // //     image: "/Images/person4.jpg",
-// // // //     bio: "Balakumar is a strategic force in project development, known for his sharp analytical mindset, meticulous planning capability, and unwavering execution discipline. He transforms complex technical requirements into structured, high-performance project frameworks that drive measurable results for Matrix Metals LLP. With a rare ability to foresee risks, optimize workflows, and coordinate cross-functional teams with precision, he ensures every project is delivered on time, within scope, and above expectation. Balakumar's leadership in project development strengthens the company's ability to scale rapidly, innovate aggressively, and maintain absolute control over project quality, making him a key architect of Matrix Metals' continued expansion and operational success."
-// // // //   },
-// // // // ];
-
-// // // // export default function ManagementTeam() {
-// // // //   const [selectedMember, setSelectedMember] = useState(null);
-// // // //   return (
-// // // //     <section className="min-h-screen bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 text-gray-900">
-// // // //       {/* HERO */}
-// // // //       <div className="relative overflow-hidden">
-// // // //         <div className="absolute inset-0 -z-10">
-// // // //           <img
-// // // //             src="/Images/news01.jpg"
-// // // //             alt="management hero"
-// // // //             className="w-full h-72 md:h-96 object-cover opacity-20"
-// // // //           />
-// // // //           <div className="absolute inset-0 bg-gradient-to-r from-gray-100/70 to-gray-200/60" />
-// // // //         </div>
-
-// // // //         <div className="container-custom px-6 py-24 md:py-32 text-orange-500">
-// // // //           <motion.h1
-// // // //             initial={{ opacity: 0, y: 30 }}
-// // // //             animate={{ opacity: 1, y: 0 }}
-// // // //             transition={{ duration: 0.7 }}
-// // // //             className="text-4xl md:text-5xl font-extrabold tracking-tight"
-// // // //           >
-// // // //             Management & Team
-// // // //           </motion.h1>
-// // // //           <motion.p
-// // // //             initial={{ opacity: 0 }}
-// // // //             animate={{ opacity: 1 }}
-// // // //             transition={{ delay: 0.2 }}
-// // // //             className="mt-3 max-w-2xl text-gray-700"
-// // // //           >
-// // // //             Senior leadership and experienced teams driving operations, quality, and logistics across JSW MI.
-// // // //           </motion.p>
-// // // //         </div>
-// // // //       </div>
-
-// // // //       {/* LEADERSHIP SECTION */}
-// // // //       <div className="container-custom px-6 py-16">
-// // // //         <h2 className="text-2xl font-bold text-gray-800 mb-10 text-center">
-// // // //           Leadership
-// // // //         </h2>
-// // // //         <div className="flex flex-col md:flex-row justify-center gap-10">
-// // // //           {leadership.map((leader, i) => (
-// // // //             <motion.div
-// // // //               key={i}
-// // // //               initial={{ opacity: 0, y: 40 }}
-// // // //               whileInView={{ opacity: 1, y: 0 }}
-// // // //               transition={{ delay: i * 0.2, duration: 0.7 }}
-// // // //               viewport={{ once: true }}
-// // // //               whileHover={{ y: -6, scale: 1.03 }}
-// // // //               onClick={() => setSelectedMember({ ...leader, type: "leadership" })}
-// // // //               className="relative rounded-2xl p-[2px] bg-gradient-to-br from-gray-300 via-gray-400 to-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 w-full md:w-1/2 max-w-md cursor-pointer"
-// // // //             >
-// // // //               <div className="bg-white/90 backdrop-blur-md rounded-2xl p-8 text-center border border-gray-300 hover:border-gray-500 transition-all duration-300">
-// // // //                 <div className="relative w-52 h-52 mx-auto overflow-hidden rounded-2xl shadow-inner">
-// // // //                   <motion.img
-// // // //                     src={leader.image}
-// // // //                     alt={leader.name}
-// // // //                     className="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
-// // // //                   />
-// // // //                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-gray-900/5 to-transparent" />
-// // // //                 </div>
-
-// // // //                 <h4 className="mt-5 text-xl font-semibold text-gray-900">
-// // // //                   {leader.name}
-// // // //                 </h4>
-// // // //                 <p className="text-sm text-gray-600 mt-1">{leader.role}</p>
-
-// // // //                 {/* Animated underline */}
-// // // //                 <motion.div
-// // // //                   className="mt-4 mx-auto h-[3px] bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 rounded-full"
-// // // //                   initial={{ width: 0 }}
-// // // //                   whileHover={{ width: 48 }}
-// // // //                   transition={{ duration: 0.4 }}
-// // // //                 />
-// // // //               </div>
-// // // //             </motion.div>
-// // // //           ))}
-// // // //         </div>
-// // // //       </div>
-
-// // // //       {/* TEAM GRID */}
-// // // //       <div className="container-custom px-6 pb-24">
-// // // //         <h2 className="text-2xl font-bold text-gray-800 mb-10 text-center">
-// // // //           Core Team
-// // // //         </h2>
-// // // //         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-// // // //           {team.map((member, i) => (
-// // // //             <motion.div
-// // // //               key={i}
-// // // //               initial={{ opacity: 0, y: 30 }}
-// // // //               whileInView={{ opacity: 1, y: 0 }}
-// // // //               transition={{ delay: i * 0.1, duration: 0.6 }}
-// // // //               viewport={{ once: true }}
-// // // //               whileHover={{ y: -4, scale: 1.02 }}
-// // // //               onClick={() => setSelectedMember({ ...member, type: "team" })}
-// // // //               className="relative rounded-2xl p-[2px] bg-gradient-to-br from-gray-300 via-gray-200 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-// // // //             >
-// // // //               <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 text-center border border-gray-300 hover:border-gray-400 transition-all duration-300">
-// // // //                 <div className="relative w-40 h-40 mx-auto overflow-hidden rounded-xl shadow-inner">
-// // // //                   <motion.img
-// // // //                     src={member.image}
-// // // //                     alt={member.name}
-// // // //                     className="w-full h-full object-cover rounded-xl transition-transform duration-300 hover:scale-110"
-// // // //                   />
-// // // //                   <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-gray-900/5 to-transparent" />
-// // // //                 </div>
-
-// // // //                 <h4 className="mt-4 text-lg font-semibold text-gray-900">
-// // // //                   {member.name}
-// // // //                 </h4>
-// // // //                 <p className="text-sm text-gray-600 mt-1">{member.role}</p>
-
-// // // //                 {/* Animated underline */}
-// // // //                 <motion.div
-// // // //                   className="mt-3 mx-auto h-[2px] bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 rounded-full"
-// // // //                   initial={{ width: 0 }}
-// // // //                   whileHover={{ width: 40 }}
-// // // //                   transition={{ duration: 0.4 }}
-// // // //                 />
-// // // //               </div>
-// // // //             </motion.div>
-// // // //           ))}
-// // // //         </div>
-// // // //       </div>
-
-// // // //       {/* Member Detail Modal */}
-// // // //       {selectedMember && (
-// // // //         <motion.div
-// // // //           initial={{ opacity: 0 }}
-// // // //           animate={{ opacity: 1 }}
-// // // //           exit={{ opacity: 0 }}
-// // // //           className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-// // // //           onClick={() => setSelectedMember(null)}
-// // // //         >
-// // // //           <motion.div
-// // // //             initial={{ opacity: 0, scale: 0.9, y: 20 }}
-// // // //             animate={{ opacity: 1, scale: 1, y: 0 }}
-// // // //             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-// // // //             transition={{ duration: 0.4 }}
-// // // //             className="bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full max-w-2xl"
-// // // //             onClick={(e) => e.stopPropagation()}
-// // // //           >
-// // // //             {/* Modal Header */}
-// // // //             <div className="sticky top-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 flex justify-between items-center">
-// // // //               <div>
-// // // //                 <h2 className="text-2xl sm:text-3xl font-bold">{selectedMember.name}</h2>
-// // // //                 <p className="text-orange-100 text-sm sm:text-base mt-1">{selectedMember.role}</p>
-// // // //               </div>
-// // // //               <motion.button
-// // // //                 whileHover={{ scale: 1.1 }}
-// // // //                 whileTap={{ scale: 0.95 }}
-// // // //                 onClick={() => setSelectedMember(null)}
-// // // //                 className="text-2xl hover:text-white transition flex-shrink-0 ml-4"
-// // // //               >
-// // // //                 ×
-// // // //               </motion.button>
-// // // //             </div>
-
-// // // //             {/* Modal Content */}
-// // // //             <div className="p-6 sm:p-8">
-// // // //               {/* Profile Image */}
-// // // //               <div className="mb-6">
-// // // //                 <motion.img
-// // // //                   initial={{ opacity: 0, scale: 0.9 }}
-// // // //                   animate={{ opacity: 1, scale: 1 }}
-// // // //                   transition={{ duration: 0.5 }}
-// // // //                   src={selectedMember.image}
-// // // //                   alt={selectedMember.name}
-// // // //                   className="w-full sm:w-64 h-64 sm:h-72 object-cover rounded-xl shadow-lg mx-auto"
-// // // //                 />
-// // // //               </div>
-
-// // // //               {/* Bio Content */}
-// // // //               <motion.div
-// // // //                 initial={{ opacity: 0, y: 10 }}
-// // // //                 animate={{ opacity: 1, y: 0 }}
-// // // //                 transition={{ duration: 0.5, delay: 0.2 }}
-// // // //                 className="space-y-4"
-// // // //               >
-// // // //                 <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-// // // //                   {selectedMember.bio}
-// // // //                 </p>
-
-// // // //                 {/* Divider */}
-// // // //                 <div className="border-t-2 border-orange-200 my-6" />
-
-// // // //                 {/* Role Badge */}
-// // // //                 <div className="flex flex-wrap gap-3">
-// // // //                   <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
-// // // //                     {selectedMember.role}
-// // // //                   </span>
-// // // //                   <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-semibold">
-// // // //                     {selectedMember.type === "leadership" ? "Leadership" : "Core Team"}
-// // // //                   </span>
-// // // //                 </div>
-// // // //               </motion.div>
-
-// // // //               {/* Close Button */}
-// // // //               <motion.div
-// // // //                 initial={{ opacity: 0 }}
-// // // //                 animate={{ opacity: 1 }}
-// // // //                 transition={{ delay: 0.3 }}
-// // // //                 className="mt-8 flex justify-center"
-// // // //               >
-// // // //                 <motion.button
-// // // //                   whileHover={{ scale: 1.05 }}
-// // // //                   whileTap={{ scale: 0.95 }}
-// // // //                   onClick={() => setSelectedMember(null)}
-// // // //                   className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition text-sm sm:text-base"
-// // // //                 >
-// // // //                   Close
-// // // //                 </motion.button>
-// // // //               </motion.div>
-// // // //             </div>
-// // // //           </motion.div>
-// // // //         </motion.div>
-// // // //       )}
-// // // //     </section>
-// // // //   );
-// // // // }
-
-
-
-
-
-// // // import React from "react";
-
-// // // export default function ManagementTeam() {
-// // //   return (
-// // //     <section className="relative w-full min-h-[85vh] overflow-hidden bg-white">
-// // //       {/* Diagonal red background */}
-// // //       <div className="absolute inset-0">
-// // //         <div className="absolute right-0 top-0 h-full w-[70%] bg-orange-500 clip-diagonal">
-
-// // //         </div>
-// // //       </div>
-
-// // //       <div className="relative z-10 max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-2 items-center px-10 py-24">
-        
-// // //         {/* LEFT CONTENT */}
-// // //         <div className="max-w-xl">
-// // //           <h4 className="text-orange-600 text-4xl font-handwriting mb-4">
-// // //             # Safety First
-// // //           </h4>
-
-// // //           <p className="text-gray-800 text-lg leading-relaxed mb-10">
-// // //             Health and Safety supersede everything else – a belief that we stand
-// // //             by and an ecosystem we foster at AM/NS India.
-// // //           </p>
-
-// // //           {/* Arrow CTA */}
-// // //           <div className="flex items-center gap-4 cursor-pointer group">
-// // //             <span className="text-orange-600 text-xl">→</span>
-// // //             <span className="uppercase tracking-widest text-sm text-gray-700 group-hover:text-black transition">
-// // //               Know More
-// // //             </span>
-// // //           </div>
-// // //         </div>
-
-// // //         {/* RIGHT ILLUSTRATION */}
-// // //         <div className="relative hidden lg:flex justify-end">
-// // //           <img
-// // //             src="/Images/safety-people.svg"
-// // //             alt="Safety First People"
-// // //             className="max-h-[520px] object-contain"
-// // //           />
-// // //         </div>
-// // //       </div>
-// // //     </section>
-// // //   );
-// // // }
-
-
-
-// // import React from "react";
-
-// // export default function ManagementTeam() {
-// //   return (
-// //     <section className="relative bg-black min-h-[85vh] overflow-hidden">
-// //       {/* Background gradient */}
-// //       <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-black to-black" />
-
-// //       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-10 py-28">
-
-// //         {/* LEFT CONTENT */}
-// //         <div>
-// //           <h4 className="text-orange-500 text-4xl font-semibold mb-6">
-// //             Safety First
-// //           </h4>
-
-// //           <p className="text-gray-300 text-lg leading-relaxed max-w-xl mb-12">
-// //             Health and Safety supersede everything else – a belief that we stand
-// //             by and an ecosystem we foster at AM/NS India.
-// //           </p>
-
-// //           <div className="inline-flex items-center gap-4 group cursor-pointer">
-// //             <span className="text-orange-500 text-2xl group-hover:translate-x-1 transition">
-// //               →
-// //             </span>
-// //             <span className="uppercase tracking-widest text-sm text-gray-400 group-hover:text-white transition">
-// //               Know More
-// //             </span>
-// //           </div>
-// //         </div>
-
-// //         {/* RIGHT VISUAL */}
-// //         <div className="hidden lg:flex justify-end">
-// //           <img
-// //             src="/Images/safety-people.svg"
-// //             alt="Safety First"
-// //             className="max-h-[520px] opacity-90"
-// //           />
-// //         </div>
-// //       </div>
-// //     </section>
-// //   );
-// // }
-
-
-
-// import React from "react";
-// import { motion } from "framer-motion";
-
-// export default function ManagementTeam() {
-//   return (
-//     <section className="bg-black py-24 px-6">
-//       <div className="max-w-7xl mx-auto">
-
-//         {/* SECTION TITLE */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           className="text-center mb-16"
-//         >
-//           <h2 className="text-white text-2xl font-semibold tracking-wide">
-//             Management Committee
-//           </h2>
-//         </motion.div>
-
-//         {/* CONTENT CARD */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 40 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.4 }}
-//           className="
-//             relative
-//             rounded-2xl
-//             bg-gradient-to-b from-zinc-900 to-black
-//             border border-white/10
-//             overflow-hidden
-//           "
-//         >
-//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center px-12 py-20">
-
-//             {/* LEFT CONTENT */}
-//             <div>
-//               <h4 className="text-orange-500 text-3xl font-semibold mb-6">
-//                 Safety First
-//               </h4>
-
-//               <p className="text-gray-300 text-lg leading-relaxed max-w-xl mb-12">
-//                 Health and Safety supersede everything else – a belief that we
-//                 stand by and an ecosystem we foster at AM/NS India.
-//               </p>
-
-//               <div className="inline-flex items-center gap-4 group cursor-pointer">
-//                 <span className="text-orange-500 text-2xl group-hover:translate-x-1 transition">
-//                   →
-//                 </span>
-//                 <span className="uppercase tracking-widest text-sm text-gray-400 group-hover:text-white transition">
-//                   Know More
-//                 </span>
-//               </div>
-//             </div>
-
-//             {/* RIGHT VISUAL */}
-//             <div className="hidden lg:flex justify-end">
-//               <img
-//                 src="/Images/safety-people.svg"
-//                 alt="Safety First"
-//                 className="max-h-[460px] opacity-90"
-//               />
-//             </div>
-//           </div>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-// import React, { useRef } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
-// import { motion } from "framer-motion";
-
-// export default function ManagementTeam() {
-//   const sliderRef = useRef(null);
-
-//   const scroll = (dir) => {
-//     sliderRef.current?.scrollBy({
-//       left: dir === "left" ? -320 : 320,
-//       behavior: "smooth",
-//     });
-//   };
-
-//   return (
-//     <section className="bg-black py-24 px-6">
-//       <div className="max-w-7xl mx-auto">
-
-//         {/* SECTION TITLE */}
-//         <div className="text-center mb-16">
-//           <h2 className="text-white text-2xl font-semibold tracking-wide">
-//             Management Committee
-//           </h2>
-//         </div>
-
-//         <div className="relative">
-
-//           {/* LEFT ARROW */}
-//           <button
-//             onClick={() => scroll("left")}
-//             className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10
-//                        bg-zinc-900/80 backdrop-blur p-3 rounded-full"
-//           >
-//             <ChevronLeft className="text-white" size={20} />
-//           </button>
-
-//           {/* SLIDER */}
-//           <div
-//             ref={sliderRef}
-//             className="flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
-//           >
-//             {[1, 2, 3, 4].map((_, index) => (
-//               <motion.div
-//                 key={index}
-//                 whileHover={{ y: -10 }}
-//                 className="
-//                   min-w-[300px] snap-start
-//                   rounded-2xl
-//                   bg-linear-to-b from-zinc-900 to-black
-//                   border border-white/10
-//                   overflow-hidden
-//                   cursor-pointer
-//                 "
-//               >
-//                 {/* IMAGE */}
-//                 <div className="h-[260px] flex items-center justify-center bg-black">
-//                   <img
-//                     src="/Images/safety-people.svg"
-//                     alt="Management Focus"
-//                     className="max-h-[200px] opacity-90"
-//                   />
-//                 </div>
-
-//                 {/* CONTENT */}
-//                 <div className="p-6">
-//                   <h4 className="text-orange-500 text-lg font-semibold mb-3">
-//                     Safety First
-//                   </h4>
-
-//                   <p className="text-gray-400 text-sm leading-relaxed mb-6">
-//                     Health and Safety supersede everything else – a belief that
-//                     we stand by and an ecosystem we foster across operations.
-//                   </p>
-
-//                   <div className="inline-flex items-center gap-3 group">
-//                     <span className="text-orange-500 text-lg group-hover:translate-x-1 transition">
-//                       →
-//                     </span>
-//                     <span className="uppercase tracking-widest text-xs text-gray-400 group-hover:text-white transition">
-//                       Know More
-//                     </span>
-//                   </div>
-//                 </div>
-//               </motion.div>
-//             ))}
-//           </div>
-
-//           {/* RIGHT ARROW */}
-//           <button
-//             onClick={() => scroll("right")}
-//             className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10
-//                        bg-zinc-900/80 backdrop-blur p-3 rounded-full"
-//           >
-//             <ChevronRight className="text-white" size={20} />
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-// import React, { useRef } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
-// import { motion } from "framer-motion";
+// import React, { useRef, useState } from "react";
+// import { ChevronLeft, ChevronRight, X } from "lucide-react";
+// import { motion, AnimatePresence } from "framer-motion";
 
 // const focuses = [
 //   {
 //     title: "Customer Protection",
 //     description:
 //       "We safeguard our customers against life’s uncertainties by providing reliable and comprehensive insurance coverage across health, motor, and property.",
+//     moreDescription:
+//       "Our customer protection strategies include advanced risk assessment tools, personalized policy recommendations, and proactive alerts for potential vulnerabilities. We partner with leading security firms to ensure data privacy and fraud prevention, while our dedicated team monitors emerging threats to keep your coverage up-to-date.",
 //     image:
 //       "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/customer-support-icon.svg",
 //   },
@@ -557,6 +16,8 @@
 //     title: "Fast Claim Settlement",
 //     description:
 //       "Our streamlined and transparent claim process ensures quick settlements, minimizing stress and maximizing trust during critical moments.",
+//     moreDescription:
+//       "Experience claim settlements in as little as 24 hours for eligible cases. Our AI-powered verification system cross-checks documents instantly, while blockchain technology ensures tamper-proof records. With a 98% approval rate and dedicated claim concierges, we turn stressful situations into seamless resolutions.",
 //     image:
 //       "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/claim-icon.svg",
 //   },
@@ -564,6 +25,8 @@
 //     title: "Digital Innovation",
 //     description:
 //       "Leveraging cutting-edge digital platforms and AI-driven tools to simplify policy purchase, renewals, and claims for a seamless customer experience.",
+//     moreDescription:
+//       "Our digital ecosystem includes a voice-activated policy builder, AR-based property assessments, and predictive analytics for premium optimization. Integrated with smart home devices, our platform offers real-time risk monitoring and automated adjustments, putting innovation at your fingertips.",
 //     image:
 //       "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/artificial-intelligence-icon.svg",
 //   },
@@ -571,6 +34,8 @@
 //     title: "Risk Management",
 //     description:
 //       "We help individuals and businesses identify, assess, and mitigate risks through customized insurance solutions and expert advisory services.",
+//     moreDescription:
+//       "From enterprise-wide risk audits to personal financial health checks, our experts use data-driven insights and scenario modeling to craft bespoke strategies. We offer workshops, simulation tools, and ongoing consultations to empower you in navigating uncertainties with confidence.",
 //     image:
 //       "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/risk-management-icon.svg",
 //   },
@@ -578,6 +43,8 @@
 //     title: "Trust & Transparency",
 //     description:
 //       "Built on integrity and ethical practices, we ensure clear communication, fair pricing, and complete transparency in every policy we offer.",
+//     moreDescription:
+//       "Every policy includes a transparency dashboard showing premium breakdowns, claim histories, and performance metrics. We publish annual ethics reports, maintain open-source pricing algorithms, and offer third-party audits upon request, fostering unbreakable trust.",
 //     image:
 //       "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/trust-icon.svg",
 //   },
@@ -585,92 +52,132 @@
 //     title: "24/7 Assistance",
 //     description:
 //       "Our round-the-clock support ensures help is always available, whether it’s roadside assistance, emergency claims, or policy-related queries.",
+//     moreDescription:
+//       "Global network of support agents, AI chatbots with human escalation, and mobile app with video consultations. From midnight emergencies to weekend queries, we provide multilingual support, real-time tracking for roadside help, and proactive check-ins during crises.",
 //     image:
 //       "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/help-desk-icon.svg",
 //   },
 // ];
 
-
 // export default function ManagementTeam() {
 //   const sliderRef = useRef(null);
+//   const [selectedFocus, setSelectedFocus] = useState(null);
 
 //   const scroll = (dir) => {
+//     const scrollAmount = sliderRef.current?.clientWidth * 0.8;
 //     sliderRef.current?.scrollBy({
-//       left: dir === "left" ? -320 : 320,
+//       left: dir === "left" ? -scrollAmount : scrollAmount,
 //       behavior: "smooth",
 //     });
 //   };
 
-//   return (
-//     <section className="bg-black py-24 px-6">
-//       <div className="max-w-7xl mx-auto">
+//   const openModal = (item) => {
+//     setSelectedFocus(item);
+//   };
 
+//   const closeModal = () => {
+//     setSelectedFocus(null);
+//   };
+
+//   return (
+//     <section className="bg-gradient-to-b from-black to-zinc-900 py-24 px-6 relative overflow-hidden">
+//       <div className="max-w-7xl mx-auto">
 //         {/* SECTION TITLE */}
 //         <div className="text-center mb-16">
-//           <h2 className="text-white text-2xl font-semibold tracking-wide">
-//             Management Committee
-//           </h2>
+//           <motion.h2
+//             initial={{ opacity: 0, y: 20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6 }}
+//             className="text-white text-4xl md:text-5xl font-bold tracking-tight mb-4"
+//           >
+//             Our Core Focuses
+//           </motion.h2>
+//           <motion.p
+//             initial={{ opacity: 0, y: 20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.2 }}
+//             className="text-gray-400 text-lg max-w-2xl mx-auto"
+//           >
+//             Discover the pillars that drive our commitment to excellence in insurance services.
+//           </motion.p>
 //         </div>
 
 //         <div className="relative">
+//           {/* GRADIENT OVERLAYS FOR SCROLL INDICATION */}
+//           <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none md:hidden" />
+//           <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none md:hidden" />
 
 //           {/* LEFT ARROW */}
 //           <button
 //             onClick={() => scroll("left")}
-//             className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10
-//                        bg-zinc-900/80 backdrop-blur p-3 rounded-full"
+//             className="flex absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-20
+//                        bg-zinc-900/50 backdrop-blur-md p-4 rounded-full shadow-lg
+//                        hover:bg-zinc-800 transition-all duration-300"
 //           >
-//             <ChevronLeft className="text-white" size={20} />
+//             <ChevronLeft className="text-white" size={24} />
 //           </button>
 
 //           {/* SLIDER */}
 //           <div
 //             ref={sliderRef}
-//             className="flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+//             className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4
+//                        scrollbar-hide touch-pan-x"
+//             style={{ scrollSnapStop: "always" }}
 //           >
 //             {focuses.map((item, index) => (
 //               <motion.div
 //                 key={index}
-//                 whileHover={{ y: -10 }}
+//                 initial={{ opacity: 0, scale: 0.95 }}
+//                 whileInView={{ opacity: 1, scale: 1 }}
+//                 transition={{ duration: 0.5, delay: index * 0.1 }}
+//                 whileHover={{ scale: 1.05, y: -10 }}
 //                 className="
-//                   min-w-[300px] snap-start
-//                   rounded-2xl
-//                   bg-gradient-to-b from-zinc-900 to-black
-//                   border border-white/10
-//                   overflow-hidden
-//                   cursor-pointer
+//                   min-w-[280px] md:min-w-[320px] snap-start
+//                   rounded-3xl
+//                   bg-gradient-to-br from-zinc-800/50 to-black/50
+//                   border border-white/10 backdrop-blur-sm
+//                   overflow-hidden shadow-xl
+//                   cursor-pointer transition-all duration-300
+//                   hover:shadow-2xl hover:border-orange-500/30
 //                 "
 //               >
 //                 {/* IMAGE */}
-//                 <div className="h-[260px] flex items-center justify-center bg-black">
+//                 <div className="h-[240px] md:h-[280px] flex items-center justify-center bg-gradient-to-b from-zinc-900 to-black relative overflow-hidden group">
 //                   <img
 //                     src={item.image}
 //                     alt={item.title}
-//                     className="max-h-[200px] opacity-90"
+//                     className="max-h-[180px] md:max-h-[220px] opacity-80 transition-transform duration-500 group-hover:scale-110"
 //                     style={{
-//                       filter: "invert(100%) sepia(75%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(100%)"
+//                       filter: "invert(100%) sepia(75%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(100%)",
 //                     }}
 //                   />
+//                   {/* Subtle overlay on hover */}
+//                   <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 transition-all duration-300" />
 //                 </div>
 
 //                 {/* CONTENT */}
-//                 <div className="p-6">
-//                   <h4 className="text-orange-500 text-lg font-semibold mb-3">
+//                 <div className="p-6 md:p-8">
+//                   <h4 className="text-orange-400 text-xl md:text-2xl font-semibold mb-4 tracking-wide">
 //                     {item.title}
 //                   </h4>
 
-//                   <p className="text-gray-400 text-sm leading-relaxed mb-6">
+//                   <p className="text-gray-300 text-base leading-relaxed mb-6">
 //                     {item.description}
 //                   </p>
 
-//                   <div className="inline-flex items-center gap-3 group">
-//                     <span className="text-orange-500 text-lg group-hover:translate-x-1 transition">
+//                   <motion.div
+//                     whileHover={{ scale: 1.05 }}
+//                     whileTap={{ scale: 0.95 }}
+//                     onClick={() => openModal(item)}
+//                     className="inline-flex items-center gap-3 group cursor-pointer"
+//                   >
+//                     <span className="text-orange-400 text-2xl group-hover:translate-x-2 transition-transform duration-300">
 //                       →
 //                     </span>
-//                     <span className="uppercase tracking-widest text-xs text-gray-400 group-hover:text-white transition">
+//                     <span className="uppercase tracking-widest text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
 //                       Know More
 //                     </span>
-//                   </div>
+//                   </motion.div>
 //                 </div>
 //               </motion.div>
 //             ))}
@@ -679,20 +186,74 @@
 //           {/* RIGHT ARROW */}
 //           <button
 //             onClick={() => scroll("right")}
-//             className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10
-//                        bg-zinc-900/80 backdrop-blur p-3 rounded-full"
+//             className="flex absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-20
+//                        bg-zinc-900/50 backdrop-blur-md p-4 rounded-full shadow-lg
+//                        hover:bg-zinc-800 transition-all duration-300"
 //           >
-//             <ChevronRight className="text-white" size={20} />
+//             <ChevronRight className="text-white" size={24} />
 //           </button>
 //         </div>
 //       </div>
+
+//       {/* MODAL */}
+//       <AnimatePresence>
+//         {selectedFocus && (
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//             transition={{ duration: 0.3 }}
+//             className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+//             onClick={closeModal}
+//           >
+//             <motion.div
+//               initial={{ scale: 0.8, opacity: 0, rotateY: -90 }}
+//               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+//               exit={{ scale: 0.8, opacity: 0, rotateY: 90 }}
+//               transition={{ duration: 0.5, type: "spring", damping: 15 }}
+//               className="bg-gradient-to-br from-zinc-900 to-black rounded-3xl border border-orange-500/20 shadow-2xl max-w-lg w-full overflow-hidden relative"
+//               onClick={(e) => e.stopPropagation()}
+//             >
+//               {/* CLOSE BUTTON */}
+//               <button
+//                 onClick={closeModal}
+//                 className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+//               >
+//                 <X size={24} />
+//               </button>
+
+//               {/* IMAGE */}
+//               <div className="h-48 flex items-center justify-center bg-gradient-to-b from-black to-zinc-900 relative">
+//                 <img
+//                   src={selectedFocus.image}
+//                   alt={selectedFocus.title}
+//                   className="max-h-36 opacity-80"
+//                   style={{
+//                     filter: "invert(100%) sepia(75%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(100%)",
+//                   }}
+//                 />
+//                 <div className="absolute inset-0 bg-orange-500/5" />
+//               </div>
+
+//               {/* CONTENT */}
+//               <div className="p-8">
+//                 <h3 className="text-orange-400 text-3xl font-bold mb-4">
+//                   {selectedFocus.title}
+//                 </h3>
+//                 <p className="text-gray-300 mb-6">
+//                   {selectedFocus.description}
+//                 </p>
+//                 <p className="text-gray-200 font-medium">
+//                   {selectedFocus.moreDescription}
+//                 </p>
+//               </div>
+//             </motion.div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
 //     </section>
 //   );
 // }
-
-
-
-
 
 
 
@@ -778,15 +339,15 @@ export default function ManagementTeam() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-black to-zinc-900 py-24 px-6 relative overflow-hidden">
+    <section className="bg-gradient-to-b from-black to-zinc-900 py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* SECTION TITLE */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-white text-4xl md:text-5xl font-bold tracking-tight mb-4"
+            className="text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
           >
             Our Core Focuses
           </motion.h2>
@@ -794,7 +355,7 @@ export default function ManagementTeam() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
+            className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto"
           >
             Discover the pillars that drive our commitment to excellence in insurance services.
           </motion.p>
@@ -802,23 +363,23 @@ export default function ManagementTeam() {
 
         <div className="relative">
           {/* GRADIENT OVERLAYS FOR SCROLL INDICATION */}
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none md:hidden" />
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none md:hidden" />
+          <div className="absolute inset-y-0 left-0 w-8 sm:w-12 md:w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none md:hidden" />
+          <div className="absolute inset-y-0 right-0 w-8 sm:w-12 md:w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none md:hidden" />
 
           {/* LEFT ARROW */}
           <button
             onClick={() => scroll("left")}
-            className="flex absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-20
-                       bg-zinc-900/50 backdrop-blur-md p-4 rounded-full shadow-lg
+            className="hidden md:flex absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-20
+                       bg-zinc-900/50 backdrop-blur-md p-3 sm:p-4 rounded-full shadow-lg
                        hover:bg-zinc-800 transition-all duration-300"
           >
-            <ChevronLeft className="text-white" size={24} />
+            <ChevronLeft className="text-white" size={20} sm:size={24} />
           </button>
 
           {/* SLIDER */}
           <div
             ref={sliderRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4
+            className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4
                        scrollbar-hide touch-pan-x"
             style={{ scrollSnapStop: "always" }}
           >
@@ -830,7 +391,7 @@ export default function ManagementTeam() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -10 }}
                 className="
-                  min-w-[280px] md:min-w-[320px] snap-start
+                  min-w-[250px] sm:min-w-[280px] md:min-w-[320px] snap-start
                   rounded-3xl
                   bg-gradient-to-br from-zinc-800/50 to-black/50
                   border border-white/10 backdrop-blur-sm
@@ -840,11 +401,11 @@ export default function ManagementTeam() {
                 "
               >
                 {/* IMAGE */}
-                <div className="h-[240px] md:h-[280px] flex items-center justify-center bg-gradient-to-b from-zinc-900 to-black relative overflow-hidden group">
+                <div className="h-[200px] sm:h-[240px] md:h-[280px] flex items-center justify-center bg-gradient-to-b from-zinc-900 to-black relative overflow-hidden group">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="max-h-[180px] md:max-h-[220px] opacity-80 transition-transform duration-500 group-hover:scale-110"
+                    className="max-h-[150px] sm:max-h-[180px] md:max-h-[220px] opacity-80 transition-transform duration-500 group-hover:scale-110"
                     style={{
                       filter: "invert(100%) sepia(75%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(100%)",
                     }}
@@ -854,12 +415,12 @@ export default function ManagementTeam() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="p-6 md:p-8">
-                  <h4 className="text-orange-400 text-xl md:text-2xl font-semibold mb-4 tracking-wide">
+                <div className="p-4 sm:p-6 md:p-8">
+                  <h4 className="text-orange-400 text-lg sm:text-xl md:text-2xl font-semibold mb-4 tracking-wide">
                     {item.title}
                   </h4>
 
-                  <p className="text-gray-300 text-base leading-relaxed mb-6">
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
                     {item.description}
                   </p>
 
@@ -869,10 +430,10 @@ export default function ManagementTeam() {
                     onClick={() => openModal(item)}
                     className="inline-flex items-center gap-3 group cursor-pointer"
                   >
-                    <span className="text-orange-400 text-2xl group-hover:translate-x-2 transition-transform duration-300">
+                    <span className="text-orange-400 text-xl sm:text-2xl group-hover:translate-x-2 transition-transform duration-300">
                       →
                     </span>
-                    <span className="uppercase tracking-widest text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
+                    <span className="uppercase tracking-widest text-xs sm:text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
                       Know More
                     </span>
                   </motion.div>
@@ -884,11 +445,11 @@ export default function ManagementTeam() {
           {/* RIGHT ARROW */}
           <button
             onClick={() => scroll("right")}
-            className="flex absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-20
-                       bg-zinc-900/50 backdrop-blur-md p-4 rounded-full shadow-lg
+            className="hidden md:flex absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-20
+                       bg-zinc-900/50 backdrop-blur-md p-3 sm:p-4 rounded-full shadow-lg
                        hover:bg-zinc-800 transition-all duration-300"
           >
-            <ChevronRight className="text-white" size={24} />
+            <ChevronRight className="text-white" size={20} sm:size={24} />
           </button>
         </div>
       </div>
@@ -917,15 +478,15 @@ export default function ManagementTeam() {
                 onClick={closeModal}
                 className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
               >
-                <X size={24} />
+                <X size={20} sm:size={24} />
               </button>
 
               {/* IMAGE */}
-              <div className="h-48 flex items-center justify-center bg-gradient-to-b from-black to-zinc-900 relative">
+              <div className="h-40 sm:h-48 flex items-center justify-center bg-gradient-to-b from-black to-zinc-900 relative">
                 <img
                   src={selectedFocus.image}
                   alt={selectedFocus.title}
-                  className="max-h-36 opacity-80"
+                  className="max-h-28 sm:max-h-36 opacity-80"
                   style={{
                     filter: "invert(100%) sepia(75%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(100%)",
                   }}
@@ -934,14 +495,14 @@ export default function ManagementTeam() {
               </div>
 
               {/* CONTENT */}
-              <div className="p-8">
-                <h3 className="text-orange-400 text-3xl font-bold mb-4">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-orange-400 text-2xl sm:text-3xl font-bold mb-4">
                   {selectedFocus.title}
                 </h3>
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-300 text-sm sm:text-base mb-6">
                   {selectedFocus.description}
                 </p>
-                <p className="text-gray-200 font-medium">
+                <p className="text-gray-200 text-sm sm:text-base font-medium">
                   {selectedFocus.moreDescription}
                 </p>
               </div>
