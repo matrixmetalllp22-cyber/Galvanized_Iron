@@ -545,8 +545,6 @@
 //   );
 // }
 
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -587,28 +585,28 @@ export default function IndustriesSection() {
   };
 
   return (
-    <section className="relative py-28 bg-black">
-      <div className="max-w-[1700px] mx-auto px-6">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-black">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold text-white text-center mb-20"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center mb-12 sm:mb-16 md:mb-20"
         >
           Our Services
         </motion.h2>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-14">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.id}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative h-[420px] rounded-[32px] overflow-hidden cursor-pointer"
+              className="group relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[420px] rounded-2xl sm:rounded-[32px] overflow-hidden cursor-pointer"
             >
               {/* Background Image */}
               <img
@@ -623,16 +621,16 @@ export default function IndustriesSection() {
                               from-black via-black/70 to-transparent" />
 
               {/* Glass Card Content */}
-              <div className="absolute bottom-0 p-10 w-full
+              <div className="absolute bottom-0 p-6 sm:p-8 md:p-10 w-full
                               backdrop-blur-xl bg-white/10 border-t border-white/20
-                              translate-y-28 group-hover:translate-y-0
+                              translate-y-16 sm:translate-y-20 md:translate-y-28 group-hover:translate-y-0
                               transition-transform duration-700">
 
-                <h3 className="text-3xl font-bold text-white mb-3">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">
                   {industry.name}
                 </h3>
 
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
                   {industry.description}
                 </p>
 
@@ -642,8 +640,8 @@ export default function IndustriesSection() {
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center gap-2
                              bg-orange-600 hover:bg-orange-700
-                             text-white px-6 py-3 rounded-full
-                             text-sm font-semibold tracking-wide
+                             text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full
+                             text-xs sm:text-sm font-semibold tracking-wide
                              shadow-lg transition-all duration-300"
                 >
                   Explore Service →
