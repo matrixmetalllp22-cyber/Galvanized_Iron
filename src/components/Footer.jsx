@@ -48,11 +48,11 @@ export default function Footer() {
               <motion.a
                 key={i}
                 href="#"
-                className="hover:opacity-100"
-                initial={{ opacity: 0, scale: 0.8 }}
+                className="hover:opacity-50 hover:text-orange-400 transition-opacity duration-100"
+                initial={{ opacity: 0, scale: 0.4 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.2, color: "#ffffff" }}
+                transition={{ delay: i * 0, duration: 0.5 }}
+                whileHover={{ scale: 2, color: "FA8128" }}
               >
                 {icon}
               </motion.a>
