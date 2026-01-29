@@ -73,9 +73,17 @@ export default function HRPO() {
           <p className="text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base">
             The oil coating provides temporary rust protection during storage and transportation.
           </p>
-          <button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-semibold transition-colors duration-300">
+
+          <a
+  href="/contact"
+  className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-semibold transition-colors duration-300 inline-block"
+>
+  Request Quote
+</a>
+
+          {/* <button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-semibold transition-colors duration-300">
             Request Quote
-          </button>
+          </button> */}
         </div>
 
         <div className="mb-12">
