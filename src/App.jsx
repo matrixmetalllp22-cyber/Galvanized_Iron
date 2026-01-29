@@ -23,6 +23,16 @@ import CutToLength from "./pages/services/CutToLength";
 import Packing from "./pages/services/Packing";
 import Blanking from "./pages/services/Blanking";
 
+// Product Pages
+import HotRolled from "./components/keyProducts/HotRolled";
+import ColdRolled from "./components/keyProducts/ColdRolled";
+import ColourCoated from "./components/keyProducts/ColourCoated";
+import Galvanized from "./components/keyProducts/Galvanized";
+import Chequered from "./components/keyProducts/Chequered";
+import HRPO from "./components/keyProducts/HRPO";
+import WeldedPipes from "./components/keyProducts/WeldedPipes";
+import SteelPlates from "./components/keyProducts/SteelPlates";
+
 
 // Components
 import Header from "./components/Header";
@@ -88,6 +98,16 @@ function AppContent() {
             <Route path="/services/cut-to-length" element={<CutToLength />} />
             <Route path="/services/packing" element={<Packing />} />
             <Route path="/services/blanking" element={<Blanking />} />
+
+            {/* Product Routes */}
+            <Route path="/products/hot-rolled" element={<HotRolled />} />
+            <Route path="/products/cold-rolled" element={<ColdRolled />} />
+            <Route path="/products/colour-coated" element={<ColourCoated />} />
+            <Route path="/products/galvanized" element={<Galvanized />} />
+            <Route path="/products/chequered" element={<Chequered />} />
+            <Route path="/products/hrpo" element={<HRPO />} />
+            <Route path="/products/welded-pipes" element={<WeldedPipes />} />
+            <Route path="/products/steel-plates" element={<SteelPlates />} />
           </Routes>
         </main>
         <Footer />
