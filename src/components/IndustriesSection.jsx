@@ -76,7 +76,7 @@ export default function IndustriesSection() {
               {/* Glass Card Content */}
               <div className="absolute bottom-0 p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 w-full
                               backdrop-blur-xl bg-white/10 border-t border-white/20
-                              translate-y-12 xs:translate-y-14 sm:translate-y-16 md:translate-y-20 lg:translate-y-24 xl:translate-y-28 group-hover:translate-y-0
+                              translate-y-0 sm:translate-y-16 md:translate-y-20 lg:translate-y-24 xl:translate-y-28 group-hover:translate-y-0
                               transition-transform duration-700">
 
                 <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold text-white mb-1 xs:mb-2 sm:mb-3">
