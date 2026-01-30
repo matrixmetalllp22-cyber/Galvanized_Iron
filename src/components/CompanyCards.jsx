@@ -176,7 +176,7 @@ const slides = [
   {
     title: "Projects",
     value: "Consistently Excellent",
-    link: "/projects",
+    link: "/Projects",
     icon: "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/project-management-icon.svg",
   },
   {

@@ -275,14 +275,14 @@ export default function Header() {
                 <p className="font-medium text-orange-400">Matrix Metals Limited</p>
 
                 <div className="space-y-4">
-                  <Link 
+                  {/* <Link 
                     to="/news" 
                     onClick={closeMenu} 
                     className="hover:text-orange-400 transition-colors duration-300 flex items-center group"
                   >
                     <span className="mr-2">→</span>
                     Matrix Metals Stories /
-                  </Link>
+                  </Link> */}
 
                   <Link 
                     to="/industries" 
@@ -290,7 +290,7 @@ export default function Header() {
                     className="hover:text-orange-400 transition-colors duration-300 flex items-center group"
                   >
                     <span className="mr-2">→</span>
-                    Locations /
+                    Locations
                   </Link>
 
                   <Link 

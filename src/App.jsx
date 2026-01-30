@@ -142,6 +142,7 @@ import Contact from "./pages/Contact";
 import Applications from "./pages/Applications";
 import CaseStudies from "./pages/CaseStudies";
 import ClientsSection from "./pages/clientsSection";
+import Projects from "./pages/Projects";
 
 // Service Pages
 import Slitting from "./pages/services/Slitting";
@@ -213,6 +214,7 @@ function AppContent() {
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/Certificaton" element={<CertificationSection />} />
             <Route path="/clientsSection" element={<ClientsSection />} />
+            <Route path="/projects" element={<Projects />} />
 
             {/* Service Routes */}
             <Route path="/services/slitting" element={<Slitting />} />

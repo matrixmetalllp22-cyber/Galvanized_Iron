@@ -1,448 +1,8 @@
-
 // import React from "react";
 // import { useNavigate } from "react-router-dom";
 // import { motion } from "framer-motion";
 
-// const IndustriesSection = () => {
-//   const navigate = useNavigate();
-
-  
-// const industries = [
-//   {
-//     id: "slitting",
-//     name: "Slitting",
-//     image: "/Images/Metal-Slitter-Machine-Line-2-700x394.webp",
-//     description:
-//       "High-precision steel slitting engineered for consistency and industrial performance.",
-//   },
-//   {
-//     id: "cut-to-length",
-//     name: "Cut-to-Length",
-//     image: "/Images/Coil-Cut-to-Lengt.jpg",
-//     description:
-//       "Accurate CTL operations with optimized flatness for manufacturing and heavy fabrication.",
-//   },
-//   {
-//     id: "packing",
-//     name: "Packing",
-//     image: "/Images/aluminium-sector.jpg",
-//     description:
-//       "Industrial-grade packing ensuring safe, stable, and protected coil transport.",
-//   },
-//   {
-//     id: "blanking",
-//     name: "Blanking",
-//     image: "/Images/maxresdefault.jpg",
-//     description:
-//       "Highly accurate blanking operation ideal for automotive and precision engineering.",
-//   },
-// ];
-
-
-
-
-
-
-
-
-
-
-
-  
-//   const handleServiceClick = (serviceId) => {
-//     navigate(`/services/${serviceId}`);
-//   };
-
-//   return (
-//     <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-200">
-//       <div className="max-w-[1700px] mx-auto px-6">
-
-//         {/* Heading */}
-//         <motion.h2
-//           initial={{ opacity: 0, y: -20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.6 }}
-//           className="text-5xl md:text-6xl font-extrabold text-gray-900 text-center mb-16"
-//         >
-//           Our Services
-//         </motion.h2>
-
-//         {/* 2×2 GRID – WIDE, NOT CENTERED */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-
-//           {industries.map((industry, index) => (
-//             <motion.div
-//               key={industry.id}
-//               initial={{ opacity: 0, y: 40, scale: 0.95 }}
-//               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-//               transition={{ duration: 0.6, delay: index * 0.15, type: "spring" }}
-//               className="rounded-3xl overflow-hidden
-//                          bg-gradient-to-br from-white via-gray-100 to-gray-200
-//                          border border-gray-300
-//                          shadow-[0_8px_20px_rgba(0,0,0,0.15)]
-//                          hover:shadow-[0_12px_30px_rgba(0,0,0,0.25)]
-//                          hover:-translate-y-2
-//                          transition-all duration-500 cursor-pointer"
-//             >
-//               {/* Image */}
-//               <motion.div
-//                 className="h-56 md:h-64 overflow-hidden"
-//                 whileHover={{ scale: 1.05 }}
-//                 transition={{ duration: 0.6 }}
-//               >
-//                 <img
-//                   src={industry.image}
-//                   alt={industry.name}
-//                   className="w-full h-full object-cover"
-//                 />
-//               </motion.div>
-
-//               {/* Content */}
-//               <div className="p-8">
-//                 <h3 className="text-2xl font-semibold text-gray-900">
-//                   {industry.name}
-//                 </h3>
-
-//                 <p className="text-gray-600 text-sm mt-3 leading-relaxed mb-6">
-//                   {industry.description}
-//                 </p>
-
-//                 {/* CTA Button */}
-//                 <motion.button
-//                   onClick={() => handleServiceClick(industry.id)}
-//                   whileHover={{ scale: 1.08 }}
-//                   whileTap={{ scale: 0.95 }}
-//                   className="bg-gradient-to-r from-orange-600 to-orange-800 
-//                              text-white px-6 py-3 rounded-xl text-sm font-medium
-//                              shadow-lg hover:shadow-2xl transition-all duration-300"
-//                 >
-//                   Read More →
-//                 </motion.button>
-//               </div>
-//             </motion.div>
-//           ))}
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default IndustriesSection;
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// const values = [
-//   {
-//     title: "Interdependently Safe",
-//     slug: "safety",
-//     illustration: "/illustrations/safe.svg",
-//     highlight: true,
-//   },
-//   {
-//     title: "Endlessly Creative",
-//     slug: "creativity",
-//     illustration: "/illustrations/creative.svg",
-//   },
-//   {
-//     title: "Consistently Excellent",
-//     slug: "excellence",
-//     illustration: "/illustrations/excellent.svg",
-//   },
-//   {
-//     title: "Forever Dynamic",
-//     slug: "dynamic",
-//     illustration: "/illustrations/dynamic.svg",
-//   },
-//   {
-//     title: "Always Collaborative",
-//     slug: "collaboration",
-//     illustration: "/illustrations/collaborative.svg",
-//   },
-// ];
-
-// export default function IndustriesSection() {
-//   return (
-//     <section className="py-28 bg-[#1f2023] text-white">
-//       <div className="max-w-7xl mx-auto px-6">
-//         {/* Section label */}
-//         <p className="text-center text-gray-400 tracking-widest uppercase mb-6">
-//           Company
-//         </p>
-
-//         {/* Grid */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-//           {values.map((item) => (
-//             <Link
-//               key={item.slug}
-//               to={`/company/${item.slug}`}
-//               aria-label={item.title}
-//               className={`group relative block p-6 bg-[#2a2b2f] border transition-all duration-300
-//                 ${
-//                   item.highlight
-//                     ? "border-orange-500"
-//                     : "border-gray-700"
-//                 }
-//                 hover:border-orange-500 hover:bg-[#303136]
-//                 focus:outline-none focus:ring-2 focus:ring-orange-500`}
-//             >
-//               {/* Illustration */}
-//               <div className="mb-6 flex justify-center">
-//                 <img
-//                   src={item.illustration}
-//                   alt={item.title}
-//                   className="w-28 h-28 opacity-90 group-hover:opacity-100 transition"
-//                 />
-//               </div>
-
-//               {/* Title */}
-//               <h3
-//                 className={`text-lg font-medium tracking-wide transition-colors duration-300
-//                   ${
-//                     item.highlight
-//                       ? "text-orange-400"
-//                       : "text-gray-200 group-hover:text-orange-400"
-//                   }`}
-//               >
-//                 {item.title}
-//               </h3>
-//             </Link>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// const values = [
-//   {
-//     title: "Interdependently Safe",
-//     slug: "safety",
-//     illustration: "/illustrations/safe.svg",
-//     highlight: true,
-//   },
-//   {
-//     title: "Endlessly Creative",
-//     slug: "creativity",
-//     illustration: "/illustrations/creative.svg",
-//   },
-//   {
-//     title: "Consistently Excellent",
-//     slug: "excellence",
-//     illustration: "/illustrations/excellent.svg",
-//   },
-//   {
-//     title: "Forever Dynamic",
-//     slug: "dynamic",
-//     illustration: "/illustrations/dynamic.svg",
-//   },
-//   {
-//     title: "Always Collaborative",
-//     slug: "collaboration",
-//     illustration: "/illustrations/collaborative.svg",
-//   },
-// ];
-
-// export default function IndustriesSection() {
-//   return (
-//     <section className="py-28 bg-[#1f2023] text-white">
-//       <div className="max-w-7xl mx-auto px-6">
-//         {/* Section label */}
-//         <p className="text-center text-gray-400 tracking-widest uppercase mb-6">
-//           Company
-//         </p>
-
-//         {/* Grid */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-//           {values.map((item) => (
-//             <Link
-//               key={item.slug}
-//               to={`/company/${item.slug}`}
-//               aria-label={item.title}
-//               className={`group relative block p-6 bg-[#2a2b2f] border transition-all duration-300
-//                 ${
-//                   item.highlight
-//                     ? "border-orange-500"
-//                     : "border-gray-700"
-//                 }
-//                 hover:border-orange-500 hover:bg-[#303136]
-//                 focus:outline-none focus:ring-2 focus:ring-orange-500`}
-//             >
-//               {/* Illustration */}
-//               <div className="mb-6 flex justify-center">
-//                 <img
-//                   src={item.illustration}
-//                   alt={item.title}
-//                   className="w-28 h-28 opacity-90 group-hover:opacity-100 transition"
-//                 />
-//               </div>
-
-//               {/* Title */}
-//               <h3
-//                 className={`text-lg font-medium tracking-wide transition-colors duration-300
-//                   ${
-//                     item.highlight
-//                       ? "text-orange-400"
-//                       : "text-gray-200 group-hover:text-orange-400"
-//                   }`}
-//               >
-//                 {item.title}
-//               </h3>
-//             </Link>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
-
-// const IndustriesSection = () => {
-//   const navigate = useNavigate();
-
-  
-// const industries = [
-//   {
-//     id: "slitting",
-//     name: "Slitting",
-//     image: "/Images/Metal-Slitter-Machine-Line-2-700x394.webp",
-//     description:
-//       "High-precision steel slitting engineered for consistency and industrial performance.",
-//   },
-//   {
-//     id: "cut-to-length",
-//     name: "Cut-to-Length",
-//     image: "/Images/Coil-Cut-to-Lengt.jpg",
-//     description:
-//       "Accurate CTL operations with optimized flatness for manufacturing and heavy fabrication.",
-//   },
-//   {
-//     id: "packing",
-//     name: "Packing",
-//     image: "/Images/aluminium-sector.jpg",
-//     description:
-//       "Industrial-grade packing ensuring safe, stable, and protected coil transport.",
-//   },
-//   {
-//     id: "blanking",
-//     name: "Blanking",
-//     image: "/Images/maxresdefault.jpg",
-//     description:
-//       "Highly accurate blanking operation ideal for automotive and precision engineering.",
-//   },
-// ];
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
-
-  
-//   const handleServiceClick = (serviceId) => {
-//     navigate(`/services/${serviceId}`);
-//   };
-
-//   return (
-//     <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-200">
-//       <div className="max-w-[1700px] mx-auto px-6">
-
-//         {/* Heading */}
-//         <motion.h2
-//           initial={{ opacity: 0, y: -20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.6 }}
-//           className="text-5xl md:text-6xl font-extrabold text-gray-900 text-center mb-16"
-//         >
-//           Our Services
-//         </motion.h2>
-
-//         {/* 2×2 GRID – WIDE, NOT CENTERED */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-
-//           {industries.map((industry, index) => (
-//             <motion.div
-//               key={industry.id}
-//               initial={{ opacity: 0, y: 40, scale: 0.95 }}
-//               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-//               transition={{ duration: 0.6, delay: index * 0.15, type: "spring" }}
-//               className="rounded-3xl overflow-hidden
-//                          bg-gradient-to-br from-white via-gray-100 to-gray-200
-//                          border border-gray-300
-//                          shadow-[0_8px_20px_rgba(0,0,0,0.15)]
-//                          hover:shadow-[0_12px_30px_rgba(0,0,0,0.25)]
-//                          hover:-translate-y-2
-//                          transition-all duration-500 cursor-pointer"
-//             >
-//               {/* Image */}
-//               <motion.div
-//                 className="h-56 md:h-64 overflow-hidden"
-//                 whileHover={{ scale: 1.05 }}
-//                 transition={{ duration: 0.6 }}
-//               >
-//                 <img
-//                   src={industry.image}
-//                   alt={industry.name}
-//                   className="w-full h-full object-cover"
-//                 />
-//               </motion.div>
-
-//               {/* Content */}
-//               <div className="p-8">
-//                 <h3 className="text-2xl font-semibold text-gray-900">
-//                   {industry.name}
-//                 </h3>
-
-//                 <p className="text-gray-600 text-sm mt-3 leading-relaxed mb-6">
-//                   {industry.description}
-//                 </p>
-
-//                 {/* CTA Button */}
-//                 <motion.button
-//                   onClick={() => handleServiceClick(industry.id)}
-//                   whileHover={{ scale: 1.08 }}
-//                   whileTap={{ scale: 0.95 }}
-//                   className="bg-gradient-to-r from-orange-600 to-orange-800 
-//                              text-white px-6 py-3 rounded-xl text-sm font-medium
-//                              shadow-lg hover:shadow-2xl transition-all duration-300"
-//                 >
-//                   Read More →
-//                 </motion.button>
-//               </div>
-//             </motion.div>
-//           ))}
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-
-// export default IndustriesSection;
-
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
-
-// // Example data (make sure this exists or import it)
+// // Same data – unchanged
 // const industries = [
 //   {
 //     id: "slitting",
@@ -454,13 +14,13 @@
 //     id: "cut-to-length",
 //     name: "Cut To Length",
 //     description: "Accurate cut-to-length processing.",
-//     image: "/Images/cut.jpg",
+//     image: "/Images/Coil-Cut-to-Lengt.jpg",
 //   },
 //   {
 //     id: "packing",
 //     name: "Packing",
 //     description: "Secure and customized packing services.",
-//     image: "/Images/packing.jpg",
+//     image: "/Images/Horizontal-Flow-Packing-Machine.webp",
 //   },
 //   {
 //     id: "blanking",
@@ -478,63 +38,66 @@
 //   };
 
 //   return (
-//     <section className="py-20 bg-gradient-to-br from-black  to-gray-500">
-//       <div className="max-w-[1700px] mx-auto px-6">
+//     <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-black">
+//       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
 
 //         {/* Heading */}
 //         <motion.h2
-//           initial={{ opacity: 0, y: -20 }}
+//           initial={{ opacity: 0, y: -30 }}
 //           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.6 }}
-//           className="text-5xl md:text-6xl font-extrabold text-white text-center mb-16"
+//           transition={{ duration: 0.8 }}
+//           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center mb-12 sm:mb-16 md:mb-20"
 //         >
 //           Our Services
 //         </motion.h2>
 
 //         {/* Grid */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-14">
 //           {industries.map((industry, index) => (
 //             <motion.div
 //               key={industry.id}
-//               initial={{ opacity: 0, y: 40, scale: 0.95 }}
-//               whileInView={{ opacity: 1, y: 0, scale: 1 }}
+//               initial={{ opacity: 0, scale: 0.9 }}
+//               whileInView={{ opacity: 1, scale: 1 }}
 //               transition={{ duration: 0.6, delay: index * 0.15 }}
-//               className="rounded-3xl overflow-hidden
-//                          bg-gradient-to-br from-black via-gray-50 to-gray-100
-//                          border border-gray-300
-//                          shadow-[0_8px_20px_rgba(0,0,0,0.15)]
-//                          hover:shadow-[0_12px_30px_rgba(0,0,0,0.25)]
-//                          hover:-translate-y-2
-//                          transition-all duration-500 cursor-pointer"
+//               className="group relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[420px] rounded-2xl sm:rounded-[32px] overflow-hidden cursor-pointer"
 //             >
-//               {/* Image */}
-//               <div className="h-56 md:h-64 overflow-hidden">
-//                 <img
-//                   src={industry.image}
-//                   alt={industry.name}
-//                   className="w-full h-full object-cover"
-//                 />
-//               </div>
+//               {/* Background Image */}
+//               <img
+//                 src={industry.image}
+//                 alt={industry.name}
+//                 className="absolute inset-0 w-full h-full object-cover 
+//                            scale-105 group-hover:scale-110 transition-transform duration-700"
+//               />
 
-//               {/* Content */}
-//               <div className="p-8">
-//                 <h3 className="text-2xl font-semibold text-gray-900">
+//               {/* Dark Overlay */}
+//               <div className="absolute inset-0 bg-gradient-to-t 
+//                               from-black via-black/70 to-transparent" />
+
+//               {/* Glass Card Content */}
+//               <div className="absolute bottom-0 p-6 sm:p-8 md:p-10 w-full
+//                               backdrop-blur-xl bg-white/10 border-t border-white/20
+//                               translate-y-16 sm:translate-y-20 md:translate-y-28 group-hover:translate-y-0
+//                               transition-transform duration-700">
+
+//                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">
 //                   {industry.name}
 //                 </h3>
 
-//                 <p className="text-gray-600 text-sm mt-3 leading-relaxed mb-6">
+//                 <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
 //                   {industry.description}
 //                 </p>
 
 //                 <motion.button
 //                   onClick={() => handleServiceClick(industry.id)}
-//                   whileHover={{ scale: 1.08 }}
+//                   whileHover={{ scale: 1.1 }}
 //                   whileTap={{ scale: 0.95 }}
-//                   className="bg-gradient-to-r from-orange-600 to-orange-800 
-//                              text-white px-6 py-3 rounded-xl text-sm font-medium
-//                              shadow-lg hover:shadow-2xl transition-all duration-300"
+//                   className="inline-flex items-center gap-2
+//                              bg-orange-600 hover:bg-orange-700
+//                              text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full
+//                              text-xs sm:text-sm font-semibold tracking-wide
+//                              shadow-lg transition-all duration-300"
 //                 >
-//                   Read More →
+//                   Explore Service →
 //                 </motion.button>
 //               </div>
 //             </motion.div>
@@ -544,6 +107,7 @@
 //     </section>
 //   );
 // }
+
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -585,71 +149,140 @@ export default function IndustriesSection() {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-black">
-      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
-
+    <section className="relative py-8 xs:py-12 sm:py-16 md:py-20 lg:py-24 bg-black overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-orange-500/10 to-transparent" />
+      
+      <div className="relative max-w-[1800px] mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 2xl:px-12">
         {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center mb-12 sm:mb-16 md:mb-20"
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16 lg:mb-18"
         >
-          Our Services
-        </motion.h2>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-4 xs:mb-5 sm:mb-6">
+            <span className="text-xs xs:text-sm uppercase tracking-widest text-orange-400 font-medium">
+              Our Expertise
+            </span>
+          </div>
+          
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 xs:mb-4">
+            Our <span className="text-orange-400">Services</span>
+          </h2>
+          
+          <p className="text-gray-300 text-sm xs:text-base sm:text-lg max-w-2xl mx-auto px-4">
+            Precision metal processing solutions for industries worldwide
+          </p>
+        </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-14">
-          {industries.map((industry, index) => (
-            <motion.div
-              key={industry.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[420px] rounded-2xl sm:rounded-[32px] overflow-hidden cursor-pointer"
-            >
-              {/* Background Image */}
-              <img
-                src={industry.image}
-                alt={industry.name}
-                className="absolute inset-0 w-full h-full object-cover 
-                           scale-105 group-hover:scale-110 transition-transform duration-700"
-              />
+        {/* Grid Container */}
+        <div className="relative">
+          {/* Grid */}
+          <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-7 lg:gap-8 xl:gap-10">
+            {industries.map((industry, index) => (
+              <motion.div
+                key={industry.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.15,
+                  ease: "easeOut" 
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="group relative aspect-[4/3] xs:aspect-[3/4] sm:aspect-square md:aspect-[4/3] lg:aspect-[5/4] 
+                           rounded-xl xs:rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer
+                           bg-gradient-to-br from-gray-900/50 to-black/50
+                           border border-white/10 backdrop-blur-sm"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <img
+                    src={industry.image}
+                    alt={industry.name}
+                    className="w-full h-full object-cover 
+                               scale-105 group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t 
+                                  from-black via-black/70 to-transparent" />
+                  
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-orange-500/0 to-orange-500/0 
+                                  group-hover:from-orange-500/10 group-hover:via-orange-500/5 group-hover:to-transparent 
+                                  transition-all duration-500" />
+                </div>
 
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t 
-                              from-black via-black/70 to-transparent" />
+                {/* Glass Card Content */}
+                <div className="absolute inset-0 p-4 xs:p-5 sm:p-6 md:p-7 lg:p-8 flex flex-col justify-end
+                                bg-gradient-to-t from-black/90 via-black/50 to-transparent
+                                transform translate-y-0 group-hover:translate-y-0
+                                transition-transform duration-500">
+                  
+                  {/* Content Container */}
+                  <div className="transform translate-y-4 xs:translate-y-6 sm:translate-y-8 md:translate-y-10 
+                                  group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 xs:mb-2">
+                      {industry.name}
+                    </h3>
 
-              {/* Glass Card Content */}
-              <div className="absolute bottom-0 p-6 sm:p-8 md:p-10 w-full
-                              backdrop-blur-xl bg-white/10 border-t border-white/20
-                              translate-y-16 sm:translate-y-20 md:translate-y-28 group-hover:translate-y-0
-                              transition-transform duration-700">
+                    <p className="text-gray-300 text-xs xs:text-sm leading-relaxed mb-3 xs:mb-4 sm:mb-5 
+                                  line-clamp-2 xs:line-clamp-3">
+                      {industry.description}
+                    </p>
 
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">
-                  {industry.name}
-                </h3>
+                    <motion.button
+                      onClick={() => handleServiceClick(industry.id)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-1 xs:gap-2
+                                 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700
+                                 text-white px-3 xs:px-4 sm:px-5 py-1.5 xs:py-2 sm:py-2.5 rounded-full
+                                 text-xs xs:text-sm font-medium tracking-wide
+                                 shadow-lg hover:shadow-orange-500/30 transition-all duration-300
+                                 border border-orange-500/30"
+                    >
+                      <span>Explore</span>
+                      <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </motion.button>
+                  </div>
+                </div>
 
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
-                  {industry.description}
-                </p>
-
-                <motion.button
-                  onClick={() => handleServiceClick(industry.id)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2
-                             bg-orange-600 hover:bg-orange-700
-                             text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full
-                             text-xs sm:text-sm font-semibold tracking-wide
-                             shadow-lg transition-all duration-300"
-                >
-                  Explore Service →
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
+                {/* Hover Indicator */}
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-orange-500 
+                                group-hover:w-full transition-all duration-500" />
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-10 xs:mt-12 sm:mt-14 md:mt-16 lg:mt-20 text-center"
+        >
+          <p className="text-gray-300 text-sm xs:text-base sm:text-lg mb-4 xs:mb-6">
+            Need a custom solution? Contact our team for specialized requirements.
+          </p>
+          <button 
+            onClick={() => navigate('/contact')}
+            className="inline-flex items-center gap-2
+                       px-5 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-3.5
+                       bg-white/10 hover:bg-white/20 border border-white/20
+                       text-white text-sm xs:text-base font-medium rounded-full
+                       transition-all duration-300 hover:scale-105"
+          >
+            <span>Get in Touch</span>
+            <span className="text-orange-400">→</span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );
