@@ -70,7 +70,7 @@ export default function IndustriesSection() {
               />
 
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t 
+              <div className="absolute inset-0 bg-linear-to-t 
                               from-black via-black/70 to-transparent" />
 
               {/* Glass Card Content */}

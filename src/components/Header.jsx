@@ -204,7 +204,7 @@ export default function Header() {
           {/* Menu Button */}
           <button
             onClick={() => setOpen(true)}
-            className="text-white uppercase tracking-widest text-xs sm:text-sm hover:text-orange-400 transition-colors"
+            className="text-white uppercase tracking-widest text-xl  xl:text-xl hover:text-black transition-colors"
             aria-label="Open menu"
           >
             Menu
@@ -264,7 +264,7 @@ export default function Header() {
                     </span>
                     <span className="relative overflow-hidden">
                       {item.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-orange-500 group-hover:w-full transition-all duration-500"></span>
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-orange-500 group-hover:w-full transition-all duration-500"></span>
                     </span>
                   </Link>
                 ))}
@@ -285,7 +285,7 @@ export default function Header() {
                   </Link> */}
 
                   <Link 
-                    to="/industries" 
+                    to="/contact" 
                     onClick={closeMenu} 
                     className="hover:text-orange-400 transition-colors duration-300 flex items-center group"
                   >
