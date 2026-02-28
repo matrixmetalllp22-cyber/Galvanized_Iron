@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const ImageSlider = () => {
   const images = [
-    "/Images/architecture-2182003_1920.jpg",
-    "/Images/prague.jpg",
-    "/Images/firenze-9292729_1280.jpg",
+    "/Images/HOME_SLIDER_GI(01).avif",
+    "/Images/home_page(slider GI 02).jpg",
+    // "/Images/HOME_SLIDER_GI(01).avif",
+    "/Images/slider.jpg",
+    "/Images/slider01.jpg",
+    // "/Images/firenze-9292729_1280.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
