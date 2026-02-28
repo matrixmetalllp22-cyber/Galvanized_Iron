@@ -198,13 +198,13 @@ export default function Header() {
             onClick={closeMenu}
             className="text-white font-extrabold text-xl sm:text-2xl leading-tight tracking-tight hover:opacity-80 transition-opacity"
           >
-            MATRIX <br /> <span className="text-orange-400">METALS</span>
+            MATRIX <br /> <span className="text-orange-400">METALS LLP</span>
           </Link>
 
           {/* Menu Button */}
           <button
             onClick={() => setOpen(true)}
-            className="text-white uppercase tracking-widest text-xl  xl:text-xl hover:text-black transition-colors"
+            className="text-white uppercase tracking-widest text-xl  xl:text-xl hover:text-orange-600 transition-colors"
             aria-label="Open menu"
           >
             Menu
@@ -225,7 +225,7 @@ export default function Header() {
             {/* TOP */}
             <div className="flex justify-between items-start px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8">
               <div className="font-extrabold text-xl sm:text-2xl md:text-3xl leading-tight">
-                MATRIX <br /> <span className="text-orange-400">METALS</span>
+                MATRIX <br /> <span className="text-orange-400">METALS LLP</span>
               </div>
 
               <button
@@ -248,7 +248,7 @@ export default function Header() {
                   { label: "Quality", path: "/industries" },
                   { label: "Services", path: "/products" },
                   { label: "Applications", path: "/applications" },
-                  { label: "Case Studies", path: "/case-studies" },
+                  // { label: "Case Studies", path: "/case-studies" },
                   { label: "Clients", path: "/clientsSection" },
                   { label: "Certification", path: "/Certificaton" },
                   { label: "Contact", path: "/contact" },
@@ -307,16 +307,13 @@ export default function Header() {
                 <div className="pt-4 md:pt-6 space-y-2 sm:space-y-3 text-sm sm:text-base opacity-80">
                   <p className="flex items-center">
                     <span className="text-orange-400 mr-2">✉</span>
-                    contact@matrixmetals.in
+                    matrixmetalllp.com
                   </p>
                   <p className="flex items-center">
                     <span className="text-orange-400 mr-2">📞</span>
-                    1800 309 8905
+                    +91 9036864329
                   </p>
-                  <p className="flex items-center">
-                    <span className="text-orange-400 mr-2">📱</span>
-                    +91 72084 14333
-                  </p>
+                  
                 </div>
 
                 {/* SOCIALS - Original social icons */}
